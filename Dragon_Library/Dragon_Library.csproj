@@ -138,6 +138,9 @@
     <Compile Include="Models\Entity\MemberRoleStatus.cs">
       <DependentUpon>DragonModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\Options.cs">
+      <DependentUpon>DragonModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\RoleAttrsDetail.cs">
       <DependentUpon>DragonModel.tt</DependentUpon>
     </Compile>

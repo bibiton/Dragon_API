@@ -43,5 +43,6 @@ namespace Dragon_Library.Models.Entity
         public virtual DbSet<SubjectArea> SubjectArea { get; set; }
         public virtual DbSet<SubjectFile> SubjectFile { get; set; }
         public virtual DbSet<SubjectType> SubjectType { get; set; }
+        public virtual DbSet<Options> Options { get; set; }
     }
 }

@@ -18,6 +18,7 @@ namespace Dragon_Library.Models.Entity
         public Subject()
         {
             this.SubjectFile = new HashSet<SubjectFile>();
+            this.Options = new HashSet<Options>();
         }
     
         public int Subject_ID { get; set; }
@@ -34,5 +35,7 @@ namespace Dragon_Library.Models.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubjectFile> SubjectFile { get; set; }
         public virtual SubjectType SubjectType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Options> Options { get; set; }
     }
 }

@@ -86,6 +86,16 @@
           <Property Name="Spi" Type="float" />
           <Property Name="Res" Type="float" />
         </EntityType>
+        <EntityType Name="Options">
+          <Key>
+            <PropertyRef Name="Option_ID" />
+          </Key>
+          <Property Name="Option_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Subject_ID" Type="int" Nullable="false" />
+          <Property Name="Option_Name" Type="nvarchar" MaxLength="150" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="150" />
+          <Property Name="IsAnswer" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="RoleAttrsDetail">
           <Key>
             <PropertyRef Name="RoleAttrsDetail_ID" />
@@ -276,6 +286,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Subject_Option">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Options" Type="Self.Options" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Subject_ID" />
+            </Principal>
+            <Dependent Role="Options">
+              <PropertyRef Name="Subject_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Subject_SubjectArea">
           <End Role="SubjectArea" Type="Self.SubjectArea" Multiplicity="0..1" />
           <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
@@ -380,6 +404,7 @@
           <EntitySet Name="MemberRoleAttrs" EntityType="Self.MemberRoleAttrs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MemberRoleImg" EntityType="Self.MemberRoleImg" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MemberRoleStatus" EntityType="Self.MemberRoleStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Options" EntityType="Self.Options" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleAttrsDetail" EntityType="Self.RoleAttrsDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StoreType" EntityType="Self.StoreType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StoryPackage" EntityType="Self.StoryPackage" Schema="dbo" store:Type="Tables" />
@@ -418,6 +443,10 @@
           <AssociationSet Name="FK_StoryPackage_Store" Association="Self.FK_StoryPackage_Store">
             <End Role="StoryPackage" EntitySet="StoryPackage" />
             <End Role="StoryStoreInfo" EntitySet="StoryStoreInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject_Option" Association="Self.FK_Subject_Option">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Options" EntitySet="Options" />
           </AssociationSet>
           <AssociationSet Name="FK_Subject_SubjectArea" Association="Self.FK_Subject_SubjectArea">
             <End Role="SubjectArea" EntitySet="SubjectArea" />
@@ -534,6 +563,11 @@
           <AssociationSet Name="FK_Subject_SubjectType" Association="DragonFighterModel.FK_Subject_SubjectType">
             <End Role="SubjectType" EntitySet="SubjectType" />
             <End Role="Subject" EntitySet="Subject" />
+          </AssociationSet>
+          <EntitySet Name="Options" EntityType="DragonFighterModel.Options" />
+          <AssociationSet Name="FK_Subject_Option" Association="DragonFighterModel.FK_Subject_Option">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Options" EntitySet="Options" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ArenaTitle">
@@ -722,6 +756,7 @@
           <NavigationProperty Name="SubjectArea" Relationship="DragonFighterModel.FK_Subject_SubjectArea" FromRole="Subject" ToRole="SubjectArea" />
           <NavigationProperty Name="SubjectFile" Relationship="DragonFighterModel.FK_Subject_SubjectFIle" FromRole="Subject" ToRole="SubjectFile" />
           <NavigationProperty Name="SubjectType" Relationship="DragonFighterModel.FK_Subject_SubjectType" FromRole="Subject" ToRole="SubjectType" />
+          <NavigationProperty Name="Options" Relationship="DragonFighterModel.FK_Subject_Option" FromRole="Subject" ToRole="Options" />
         </EntityType>
         <EntityType Name="SubjectArea">
           <Key>
@@ -933,6 +968,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Options">
+          <Key>
+            <PropertyRef Name="Option_ID" />
+          </Key>
+          <Property Name="Option_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject_ID" Type="Int32" Nullable="false" />
+          <Property Name="Option_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsAnswer" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Subject" Relationship="DragonFighterModel.FK_Subject_Option" FromRole="Options" ToRole="Subject" />
+        </EntityType>
+        <Association Name="FK_Subject_Option">
+          <End Type="DragonFighterModel.Subject" Role="Subject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DragonFighterModel.Options" Role="Options" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Subject_ID" />
+            </Principal>
+            <Dependent Role="Options">
+              <PropertyRef Name="Subject_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1137,6 +1197,17 @@
               <MappingFragment StoreEntitySet="SubjectType">
                 <ScalarProperty Name="SubjectType_Name" ColumnName="SubjectType_Name" />
                 <ScalarProperty Name="SubjectType_ID" ColumnName="SubjectType_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Options">
+            <EntityTypeMapping TypeName="DragonFighterModel.Options">
+              <MappingFragment StoreEntitySet="Options">
+                <ScalarProperty Name="IsAnswer" ColumnName="IsAnswer" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Option_Name" ColumnName="Option_Name" />
+                <ScalarProperty Name="Subject_ID" ColumnName="Subject_ID" />
+                <ScalarProperty Name="Option_ID" ColumnName="Option_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

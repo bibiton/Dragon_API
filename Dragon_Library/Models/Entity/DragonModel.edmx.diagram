@@ -38,6 +38,8 @@
         <AssociationConnector Association="DragonFighterModel.FK_Subject_SubjectArea" />
         <AssociationConnector Association="DragonFighterModel.FK_Subject_SubjectFIle" />
         <AssociationConnector Association="DragonFighterModel.FK_Subject_SubjectType" />
+        <EntityTypeShape EntityType="DragonFighterModel.Options" Width="1.5" PointX="10.25" PointY="11.875" />
+        <AssociationConnector Association="DragonFighterModel.FK_Subject_Option" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
