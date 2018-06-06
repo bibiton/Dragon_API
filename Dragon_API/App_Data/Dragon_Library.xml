@@ -24,6 +24,26 @@
         <member name="P:Dragon_Library.API.ServerTokenResult.result_content">
             <summary>API資料回應內容</summary>
         </member>
+        <member name="T:Dragon_Library.API.ExpModels">
+            <summary>
+            經驗值對應
+            </summary>
+        </member>
+        <member name="P:Dragon_Library.API.ExpModels.Lv">
+            <summary>
+            等級
+            </summary>
+        </member>
+        <member name="P:Dragon_Library.API.ExpModels.Exp">
+            <summary>
+            所需經驗
+            </summary>
+        </member>
+        <member name="T:Dragon_Library.API.MemberModels">
+            <summary>
+            帳號資料
+            </summary>
+        </member>
         <member name="T:Dragon_Library.API.MemberRoleAddPointModels">
             <summary>
             角色配點
@@ -69,6 +89,9 @@
         </member>
         <member name="P:Dragon_Library.API.MemberRoleModels.MemberRole_Exp">
             <summary>經驗值</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleModels.MemberRole_Lv">
+            <summary>等級區間</summary>
         </member>
         <member name="P:Dragon_Library.API.MemberRoleModels.MemberRole_ArenaPoints">
             <summary>對戰點</summary>

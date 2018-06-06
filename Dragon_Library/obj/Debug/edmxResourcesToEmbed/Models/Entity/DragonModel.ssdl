@@ -9,6 +9,74 @@
     <Property Name="WinCount" Type="int" Nullable="false" />
     <Property Name="GetPoints" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="EquipmentBaseElement">
+    <Key>
+      <PropertyRef Name="EquipmentBaseElement_ID" />
+    </Key>
+    <Property Name="EquipmentBaseElement_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EquipmentBaseElement_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="EquipmentBaseElement_Key" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EquipmentLevel">
+    <Key>
+      <PropertyRef Name="EquipmentLevel_ID" />
+    </Key>
+    <Property Name="EquipmentLevel_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="AddAttr_Count" Type="tinyint" />
+    <Property Name="AddAttrMax" Type="smallint" />
+    <Property Name="AddAttrMin" Type="smallint" />
+    <Property Name="LevelName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EquipmentMappingP2E">
+    <Key>
+      <PropertyRef Name="EquipmentMappingP2E_ID" />
+    </Key>
+    <Property Name="EquipmentMappingP2E_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EquipmentPrototype_ID" Type="int" />
+    <Property Name="EquipmentBaseElement_ID" Type="int" />
+    <Property Name="MaxValue" Type="float" />
+    <Property Name="MinValue" Type="float" />
+  </EntityType>
+  <EntityType Name="EquipmentPrototype">
+    <Key>
+      <PropertyRef Name="EquipmentPrototype_ID" />
+    </Key>
+    <Property Name="EquipmentPrototype_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EquipmentPrototype_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="StoryPackage_ID" Type="int" Nullable="false" />
+    <Property Name="EquipmentType_ID" Type="int" Nullable="false" />
+    <Property Name="EquipmentType_Image" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EquipmentPrototypeLevelRare">
+    <Key>
+      <PropertyRef Name="EquipmentPrototypeLevelRare_ID" />
+    </Key>
+    <Property Name="EquipmentPrototypeLevelRare_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EquipmentPrototype_ID" Type="int" />
+    <Property Name="EquipmentLevel_ID" Type="int" />
+    <Property Name="ProbabilityPercent" Type="float" />
+  </EntityType>
+  <EntityType Name="EquipmentPrototypeLimit">
+    <Key>
+      <PropertyRef Name="EquipmentPrototypeLimit_ID" />
+    </Key>
+    <Property Name="EquipmentPrototypeLimit_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EquipmentPrototype_ID" Type="int" />
+    <Property Name="Limit_Lv" Type="int" />
+    <Property Name="Limit_Con" Type="int" />
+    <Property Name="Limit_Str" Type="int" />
+    <Property Name="Limit_Vit" Type="int" />
+    <Property Name="Limit_Spd" Type="int" />
+    <Property Name="Limit_Int" Type="int" />
+  </EntityType>
+  <EntityType Name="EquipmentType">
+    <Key>
+      <PropertyRef Name="EquipmentType_ID" />
+    </Key>
+    <Property Name="EquipmentType_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EquipmentType_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
   <EntityType Name="Member">
     <Key>
       <PropertyRef Name="Member_ID" />
@@ -51,6 +119,13 @@
     <Property Name="Spd" Type="int" Nullable="false" />
     <Property Name="Int" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="MemberRole_LvExp">
+    <Key>
+      <PropertyRef Name="Lv" />
+    </Key>
+    <Property Name="Lv" Type="int" Nullable="false" />
+    <Property Name="Exp" Type="int" />
+  </EntityType>
   <EntityType Name="MemberRoleAttrs">
     <Key>
       <PropertyRef Name="MemberRoleAttrs_ID" />
@@ -80,6 +155,16 @@
     <Property Name="Agi" Type="float" />
     <Property Name="Spi" Type="float" />
     <Property Name="Res" Type="float" />
+  </EntityType>
+  <EntityType Name="Options">
+    <Key>
+      <PropertyRef Name="Option_ID" />
+    </Key>
+    <Property Name="Option_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject_ID" Type="int" Nullable="false" />
+    <Property Name="Option_Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsAnswer" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="RoleAttrsDetail">
     <Key>
@@ -183,6 +268,42 @@
     <Property Name="SubjectType_ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SubjectType_Name" Type="nvarchar" MaxLength="150" Nullable="false" />
   </EntityType>
+  <Association Name="FK_EquipmentMappingP2E_EquipmentBaseElement">
+    <End Role="EquipmentBaseElement" Type="Self.EquipmentBaseElement" Multiplicity="0..1" />
+    <End Role="EquipmentMappingP2E" Type="Self.EquipmentMappingP2E" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentBaseElement">
+        <PropertyRef Name="EquipmentBaseElement_ID" />
+      </Principal>
+      <Dependent Role="EquipmentMappingP2E">
+        <PropertyRef Name="EquipmentBaseElement_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipmentMappingP2E_EquipmentPrototype">
+    <End Role="EquipmentPrototype" Type="Self.EquipmentPrototype" Multiplicity="0..1" />
+    <End Role="EquipmentMappingP2E" Type="Self.EquipmentMappingP2E" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentPrototype">
+        <PropertyRef Name="EquipmentPrototype_ID" />
+      </Principal>
+      <Dependent Role="EquipmentMappingP2E">
+        <PropertyRef Name="EquipmentPrototype_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipmentPrototypeLimit_EquipmentPrototype">
+    <End Role="EquipmentPrototype" Type="Self.EquipmentPrototype" Multiplicity="0..1" />
+    <End Role="EquipmentPrototypeLimit" Type="Self.EquipmentPrototypeLimit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentPrototype">
+        <PropertyRef Name="EquipmentPrototype_ID" />
+      </Principal>
+      <Dependent Role="EquipmentPrototypeLimit">
+        <PropertyRef Name="EquipmentPrototype_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Member_MemberRole">
     <End Role="Member" Type="Self.Member" Multiplicity="1" />
     <End Role="MemberRole" Type="Self.MemberRole" Multiplicity="*" />
@@ -233,6 +354,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PrototypeLevelRare_EquipmentLevel">
+    <End Role="EquipmentLevel" Type="Self.EquipmentLevel" Multiplicity="0..1" />
+    <End Role="EquipmentPrototypeLevelRare" Type="Self.EquipmentPrototypeLevelRare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentLevel">
+        <PropertyRef Name="EquipmentLevel_ID" />
+      </Principal>
+      <Dependent Role="EquipmentPrototypeLevelRare">
+        <PropertyRef Name="EquipmentLevel_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrototypeLevelRare_EquipmentPrototype">
+    <End Role="EquipmentPrototype" Type="Self.EquipmentPrototype" Multiplicity="0..1" />
+    <End Role="EquipmentPrototypeLevelRare" Type="Self.EquipmentPrototypeLevelRare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentPrototype">
+        <PropertyRef Name="EquipmentPrototype_ID" />
+      </Principal>
+      <Dependent Role="EquipmentPrototypeLevelRare">
+        <PropertyRef Name="EquipmentPrototype_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_RoleAttrs_RoleAttrsDetail">
     <End Role="MemberRoleAttrs" Type="Self.MemberRoleAttrs" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -259,6 +404,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Story_EquipPrototype">
+    <End Role="StoryPackage" Type="Self.StoryPackage" Multiplicity="1" />
+    <End Role="EquipmentPrototype" Type="Self.EquipmentPrototype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoryPackage">
+        <PropertyRef Name="StoryPackage_ID" />
+      </Principal>
+      <Dependent Role="EquipmentPrototype">
+        <PropertyRef Name="StoryPackage_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_StoryPackage_Store">
     <End Role="StoryPackage" Type="Self.StoryPackage" Multiplicity="1" />
     <End Role="StoryStoreInfo" Type="Self.StoryStoreInfo" Multiplicity="*" />
@@ -268,6 +425,20 @@
       </Principal>
       <Dependent Role="StoryStoreInfo">
         <PropertyRef Name="StoryPackage_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_Option">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Options" Type="Self.Options" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Subject_ID" />
+      </Principal>
+      <Dependent Role="Options">
+        <PropertyRef Name="Subject_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -304,6 +475,18 @@
       </Principal>
       <Dependent Role="Subject">
         <PropertyRef Name="SubjectType_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Type_EquipPrototype">
+    <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="1" />
+    <End Role="EquipmentPrototype" Type="Self.EquipmentPrototype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentType">
+        <PropertyRef Name="EquipmentType_ID" />
+      </Principal>
+      <Dependent Role="EquipmentPrototype">
+        <PropertyRef Name="EquipmentType_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -369,12 +552,21 @@
   </Association>
   <EntityContainer Name="DragonFighterModelStoreContainer">
     <EntitySet Name="ArenaTitle" EntityType="Self.ArenaTitle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquipmentBaseElement" EntityType="Self.EquipmentBaseElement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquipmentLevel" EntityType="Self.EquipmentLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquipmentMappingP2E" EntityType="Self.EquipmentMappingP2E" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquipmentPrototype" EntityType="Self.EquipmentPrototype" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquipmentPrototypeLevelRare" EntityType="Self.EquipmentPrototypeLevelRare" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquipmentPrototypeLimit" EntityType="Self.EquipmentPrototypeLimit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquipmentType" EntityType="Self.EquipmentType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MemberLog" EntityType="Self.MemberLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MemberRole" EntityType="Self.MemberRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberRole_LvExp" EntityType="Self.MemberRole_LvExp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MemberRoleAttrs" EntityType="Self.MemberRoleAttrs" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MemberRoleImg" EntityType="Self.MemberRoleImg" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MemberRoleStatus" EntityType="Self.MemberRoleStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Options" EntityType="Self.Options" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RoleAttrsDetail" EntityType="Self.RoleAttrsDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StoreType" EntityType="Self.StoreType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StoryPackage" EntityType="Self.StoryPackage" Schema="dbo" store:Type="Tables" />
@@ -386,6 +578,18 @@
     <EntitySet Name="SubjectArea" EntityType="Self.SubjectArea" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubjectFile" EntityType="Self.SubjectFile" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubjectType" EntityType="Self.SubjectType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_EquipmentMappingP2E_EquipmentBaseElement" Association="Self.FK_EquipmentMappingP2E_EquipmentBaseElement">
+      <End Role="EquipmentBaseElement" EntitySet="EquipmentBaseElement" />
+      <End Role="EquipmentMappingP2E" EntitySet="EquipmentMappingP2E" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipmentMappingP2E_EquipmentPrototype" Association="Self.FK_EquipmentMappingP2E_EquipmentPrototype">
+      <End Role="EquipmentPrototype" EntitySet="EquipmentPrototype" />
+      <End Role="EquipmentMappingP2E" EntitySet="EquipmentMappingP2E" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipmentPrototypeLimit_EquipmentPrototype" Association="Self.FK_EquipmentPrototypeLimit_EquipmentPrototype">
+      <End Role="EquipmentPrototype" EntitySet="EquipmentPrototype" />
+      <End Role="EquipmentPrototypeLimit" EntitySet="EquipmentPrototypeLimit" />
+    </AssociationSet>
     <AssociationSet Name="FK_Member_MemberRole" Association="Self.FK_Member_MemberRole">
       <End Role="Member" EntitySet="Member" />
       <End Role="MemberRole" EntitySet="MemberRole" />
@@ -402,6 +606,14 @@
       <End Role="MemberRole" EntitySet="MemberRole" />
       <End Role="RoleAttrsDetail" EntitySet="RoleAttrsDetail" />
     </AssociationSet>
+    <AssociationSet Name="FK_PrototypeLevelRare_EquipmentLevel" Association="Self.FK_PrototypeLevelRare_EquipmentLevel">
+      <End Role="EquipmentLevel" EntitySet="EquipmentLevel" />
+      <End Role="EquipmentPrototypeLevelRare" EntitySet="EquipmentPrototypeLevelRare" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrototypeLevelRare_EquipmentPrototype" Association="Self.FK_PrototypeLevelRare_EquipmentPrototype">
+      <End Role="EquipmentPrototype" EntitySet="EquipmentPrototype" />
+      <End Role="EquipmentPrototypeLevelRare" EntitySet="EquipmentPrototypeLevelRare" />
+    </AssociationSet>
     <AssociationSet Name="FK_RoleAttrs_RoleAttrsDetail" Association="Self.FK_RoleAttrs_RoleAttrsDetail">
       <End Role="MemberRoleAttrs" EntitySet="MemberRoleAttrs" />
       <End Role="RoleAttrsDetail" EntitySet="RoleAttrsDetail" />
@@ -410,9 +622,17 @@
       <End Role="StoreType" EntitySet="StoreType" />
       <End Role="StoryStoreInfo" EntitySet="StoryStoreInfo" />
     </AssociationSet>
+    <AssociationSet Name="FK_Story_EquipPrototype" Association="Self.FK_Story_EquipPrototype">
+      <End Role="StoryPackage" EntitySet="StoryPackage" />
+      <End Role="EquipmentPrototype" EntitySet="EquipmentPrototype" />
+    </AssociationSet>
     <AssociationSet Name="FK_StoryPackage_Store" Association="Self.FK_StoryPackage_Store">
       <End Role="StoryPackage" EntitySet="StoryPackage" />
       <End Role="StoryStoreInfo" EntitySet="StoryStoreInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_Option" Association="Self.FK_Subject_Option">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Options" EntitySet="Options" />
     </AssociationSet>
     <AssociationSet Name="FK_Subject_SubjectArea" Association="Self.FK_Subject_SubjectArea">
       <End Role="SubjectArea" EntitySet="SubjectArea" />
@@ -425,6 +645,10 @@
     <AssociationSet Name="FK_Subject_SubjectType" Association="Self.FK_Subject_SubjectType">
       <End Role="SubjectType" EntitySet="SubjectType" />
       <End Role="Subject" EntitySet="Subject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Type_EquipPrototype" Association="Self.FK_Type_EquipPrototype">
+      <End Role="EquipmentType" EntitySet="EquipmentType" />
+      <End Role="EquipmentPrototype" EntitySet="EquipmentPrototype" />
     </AssociationSet>
     <AssociationSet Name="MemberMemberLog" Association="Self.MemberMemberLog">
       <End Role="Member" EntitySet="Member" />

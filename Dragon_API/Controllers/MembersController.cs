@@ -37,11 +37,11 @@ namespace Dragon_API.Controllers
         /// </summary>
         /// <param name="IToken"></param>
         /// <returns></returns>
-        [ResponseType(typeof(ResultModel<object>))]
-        private ResultModel<object> IMember(string IToken)
+        [ResponseType(typeof(ResultModel<MemberModels>))]
+        private ResultModel<MemberModels> IMember(string IToken)
         {
             string ITokenDecryptString = ConfigurationManager.AppSettings["ServerTokenDecryptString"];
-            ResultModel<object> result = new ResultModel<object>();
+            ResultModel<MemberModels> result = new ResultModel<MemberModels>();
 
             string TokenData = IToken.Length > 0 ? IToken.DESDecode(ITokenDecryptString) : "";
             Member m = new Member();
@@ -66,7 +66,16 @@ namespace Dragon_API.Controllers
                 else
                 {
                     memberinfo.MemberLog = memberinfo.MemberLog.OrderByDescending(e => e.ActionTime).Take(5).ToList();
-                    result.result_content = memberinfo;
+                    MemberModels memberModels = new MemberModels();
+                    memberModels.Member_ID = memberinfo.Member_ID;
+                    memberModels.Student_ID = memberinfo.Student_ID;
+                    memberModels.Member_Account = memberinfo.Member_Account;
+                    memberModels.Member_Password = memberinfo.Member_Password;
+                    memberModels.CreateTime = memberinfo.CreateTime;
+                    memberModels.Course_ID = memberinfo.Course_ID;
+                    memberModels.Student_Source = memberinfo.Student_Source;
+                    memberModels.IToken = memberinfo.IToken;
+                    result.result_content = memberModels;
                     result.result_status = true;
                     result.result_message = "";
                    
@@ -86,7 +95,17 @@ namespace Dragon_API.Controllers
                     result.result_status = true;
                     result.result_message = "注册成功";
                     Member ac = member_db.Get(e => e.Member_Account == m.Member_Account && e.Student_ID == m.Student_ID);
-                    result.result_content = ac;
+                    MemberModels memberModels = new MemberModels();
+                    memberModels.Member_ID = ac.Member_ID;
+                    memberModels.Student_ID = ac.Student_ID;
+                    memberModels.Member_Account = ac.Member_Account;
+                    memberModels.Member_Password = ac.Member_Password;
+                    memberModels.CreateTime = ac.CreateTime;
+                    memberModels.Course_ID = ac.Course_ID;
+                    memberModels.Student_Source = ac.Student_Source;
+                    memberModels.IToken = ac.IToken;
+
+                    result.result_content = memberModels;
                     MemberLog memberLog = new MemberLog();
                     memberLog.Member_ID = ac.Member_ID;
                     memberLog.Action = "Create and Login";
@@ -108,8 +127,8 @@ namespace Dragon_API.Controllers
         /// <param name="member"></param>
         /// <returns>
         /// </returns>
-        [ResponseType(typeof(ResultModel<object>))]
-        public ResultModel<object> PostMember(Member member)
+        [ResponseType(typeof(ResultModel<MemberModels>))]
+        public ResultModel<MemberModels> PostMember(Member member)
         {
             #region 取得TOKEN內帳密
             IEnumerable<string> tokens;
@@ -124,7 +143,7 @@ namespace Dragon_API.Controllers
             {
                 return IMember(token);
             }
-            ResultModel<object> result = new ResultModel<object>();
+            ResultModel<MemberModels> result = new ResultModel<MemberModels>();
            
             if (!ModelState.IsValid)
             {
@@ -150,7 +169,16 @@ namespace Dragon_API.Controllers
                    
                     string st = ac.Member_Account +","+ac.Member_Password+"," + DateTime.Now.AddHours(8).AddDays(1).ToString("yyyy/MM/dd HH:mm:ss") + ",App";
                     ac.IToken = st.DESEncode(ServerTokenDecryptString);
-                    result.result_content = ac;
+                    MemberModels memberModels = new MemberModels();
+                    memberModels.Member_ID = ac.Member_ID;
+                    memberModels.Student_ID = ac.Student_ID;
+                    memberModels.Member_Account = ac.Member_Account;
+                    memberModels.Member_Password = ac.Member_Password;
+                    memberModels.CreateTime = ac.CreateTime;
+                    memberModels.Course_ID = ac.Course_ID;
+                    memberModels.Student_Source = ac.Student_Source;
+                    memberModels.IToken = ac.IToken;
+                    result.result_content = memberModels;
                     MemberLog memberLog = new MemberLog();
                     memberLog.Member_ID = ac.Member_ID;
                     memberLog.Action = "Login";
@@ -170,7 +198,16 @@ namespace Dragon_API.Controllers
                     Member ac = member_db.Get(e => e.Member_Password == member.Member_Password && e.Member_Account == member.Member_Account);
                     string st = ac.Member_Account + "," + ac.Member_Password + "," + DateTime.Now.AddHours(8).AddDays(1).ToString("yyyy/MM/dd HH:mm:ss") + ",App";
                     ac.IToken = st.DESEncode(ServerTokenDecryptString);
-                    result.result_content = ac;
+                    MemberModels memberModels = new MemberModels();
+                    memberModels.Member_ID = ac.Member_ID;
+                    memberModels.Student_ID = ac.Student_ID;
+                    memberModels.Member_Account = ac.Member_Account;
+                    memberModels.Member_Password = ac.Member_Password;
+                    memberModels.CreateTime = ac.CreateTime;
+                    memberModels.Course_ID = ac.Course_ID;  
+                    memberModels.Student_Source = ac.Student_Source;
+                    memberModels.IToken = ac.IToken;
+                    result.result_content = memberModels;
                     MemberLog memberLog = new MemberLog();
                     memberLog.Member_ID = ac.Member_ID;
                     memberLog.Action = "Create and Login";

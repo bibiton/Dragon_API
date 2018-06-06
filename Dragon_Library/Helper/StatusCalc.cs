@@ -36,7 +36,7 @@ namespace Helper.StatusCalc
                                   memberRole.Str * 2 +
                                   memberRole.Vit * 3 +
                                   memberRole.Spd * 3 +
-                                  memberRole.Int * 1 +20;
+                                  memberRole.Int * 1 + 20;
             #endregion
             #region MP
             memberRoleStatus.MP = memberRole.Con * 1 +
@@ -80,20 +80,20 @@ namespace Helper.StatusCalc
                                   memberRole.Spd * .2 +
                                   memberRole.Int * -.3 + 100;
             #endregion
-           
-              MemberRoleStatus sc = MemberRoleStatus_db.Get(e => e.MemberRole_ID == memberRole.MemberRole_ID);
+
+            MemberRoleStatus sc = MemberRoleStatus_db.Get(e => e.MemberRole_ID == memberRole.MemberRole_ID);
             MemberRoleStatus_db = new GenericRepository<MemberRoleStatus>();
             if (sc == null)
                 MemberRoleStatus_db.Create(memberRoleStatus);
             else
             {
                 memberRoleStatus.MemberRoleStatus_ID = sc.MemberRoleStatus_ID;
-               
+
                 MemberRoleStatus_db.Update(memberRoleStatus);
             }
-                
+
             return memberRoleStatus;
         }
-        
+
     }
 }

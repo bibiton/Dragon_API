@@ -481,6 +481,18 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:Dragon_API.Controller.ExpController.GetExp">
+            <summary>
+            取得ExpList
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Dragon_API.Controller.ExpController.GetExp(System.Int32)">
+            <summary>
+            取得單一等級Exp
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Dragon_API.Controller.AuthController.Get">
             <summary>
             取得Server_Token

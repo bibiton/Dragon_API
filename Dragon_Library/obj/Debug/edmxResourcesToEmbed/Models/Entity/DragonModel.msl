@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DragonFighterModelStoreContainer" CdmEntityContainer="DragonFighterEntities1">
+  <EntityContainerMapping StorageEntityContainer="DragonFighterModelStoreContainer" CdmEntityContainer="DragonFighterEntities">
     <EntitySetMapping Name="ArenaTitle">
       <EntityTypeMapping TypeName="DragonFighterModel.ArenaTitle">
         <MappingFragment StoreEntitySet="ArenaTitle">
@@ -199,6 +199,100 @@
         <MappingFragment StoreEntitySet="SubjectType">
           <ScalarProperty Name="SubjectType_Name" ColumnName="SubjectType_Name" />
           <ScalarProperty Name="SubjectType_ID" ColumnName="SubjectType_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Options">
+      <EntityTypeMapping TypeName="DragonFighterModel.Options">
+        <MappingFragment StoreEntitySet="Options">
+          <ScalarProperty Name="IsAnswer" ColumnName="IsAnswer" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Option_Name" ColumnName="Option_Name" />
+          <ScalarProperty Name="Subject_ID" ColumnName="Subject_ID" />
+          <ScalarProperty Name="Option_ID" ColumnName="Option_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberRole_LvExp">
+      <EntityTypeMapping TypeName="DragonFighterModel.MemberRole_LvExp">
+        <MappingFragment StoreEntitySet="MemberRole_LvExp">
+          <ScalarProperty Name="Exp" ColumnName="Exp" />
+          <ScalarProperty Name="Lv" ColumnName="Lv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipmentBaseElement">
+      <EntityTypeMapping TypeName="DragonFighterModel.EquipmentBaseElement">
+        <MappingFragment StoreEntitySet="EquipmentBaseElement">
+          <ScalarProperty Name="EquipmentBaseElement_Key" ColumnName="EquipmentBaseElement_Key" />
+          <ScalarProperty Name="EquipmentBaseElement_Name" ColumnName="EquipmentBaseElement_Name" />
+          <ScalarProperty Name="EquipmentBaseElement_ID" ColumnName="EquipmentBaseElement_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipmentLevel">
+      <EntityTypeMapping TypeName="DragonFighterModel.EquipmentLevel">
+        <MappingFragment StoreEntitySet="EquipmentLevel">
+          <ScalarProperty Name="LevelName" ColumnName="LevelName" />
+          <ScalarProperty Name="AddAttrMin" ColumnName="AddAttrMin" />
+          <ScalarProperty Name="AddAttrMax" ColumnName="AddAttrMax" />
+          <ScalarProperty Name="AddAttr_Count" ColumnName="AddAttr_Count" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="EquipmentLevel_ID" ColumnName="EquipmentLevel_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipmentMappingP2E">
+      <EntityTypeMapping TypeName="DragonFighterModel.EquipmentMappingP2E">
+        <MappingFragment StoreEntitySet="EquipmentMappingP2E">
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="EquipmentBaseElement_ID" ColumnName="EquipmentBaseElement_ID" />
+          <ScalarProperty Name="EquipmentPrototype_ID" ColumnName="EquipmentPrototype_ID" />
+          <ScalarProperty Name="EquipmentMappingP2E_ID" ColumnName="EquipmentMappingP2E_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipmentPrototype">
+      <EntityTypeMapping TypeName="DragonFighterModel.EquipmentPrototype">
+        <MappingFragment StoreEntitySet="EquipmentPrototype">
+          <ScalarProperty Name="EquipmentType_Image" ColumnName="EquipmentType_Image" />
+          <ScalarProperty Name="EquipmentType_ID" ColumnName="EquipmentType_ID" />
+          <ScalarProperty Name="StoryPackage_ID" ColumnName="StoryPackage_ID" />
+          <ScalarProperty Name="EquipmentPrototype_Name" ColumnName="EquipmentPrototype_Name" />
+          <ScalarProperty Name="EquipmentPrototype_ID" ColumnName="EquipmentPrototype_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipmentPrototypeLevelRare">
+      <EntityTypeMapping TypeName="DragonFighterModel.EquipmentPrototypeLevelRare">
+        <MappingFragment StoreEntitySet="EquipmentPrototypeLevelRare">
+          <ScalarProperty Name="ProbabilityPercent" ColumnName="ProbabilityPercent" />
+          <ScalarProperty Name="EquipmentLevel_ID" ColumnName="EquipmentLevel_ID" />
+          <ScalarProperty Name="EquipmentPrototype_ID" ColumnName="EquipmentPrototype_ID" />
+          <ScalarProperty Name="EquipmentPrototypeLevelRare_ID" ColumnName="EquipmentPrototypeLevelRare_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipmentType">
+      <EntityTypeMapping TypeName="DragonFighterModel.EquipmentType">
+        <MappingFragment StoreEntitySet="EquipmentType">
+          <ScalarProperty Name="EquipmentType_Name" ColumnName="EquipmentType_Name" />
+          <ScalarProperty Name="EquipmentType_ID" ColumnName="EquipmentType_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipmentPrototypeLimit">
+      <EntityTypeMapping TypeName="DragonFighterModel.EquipmentPrototypeLimit">
+        <MappingFragment StoreEntitySet="EquipmentPrototypeLimit">
+          <ScalarProperty Name="Limit_Int" ColumnName="Limit_Int" />
+          <ScalarProperty Name="Limit_Spd" ColumnName="Limit_Spd" />
+          <ScalarProperty Name="Limit_Vit" ColumnName="Limit_Vit" />
+          <ScalarProperty Name="Limit_Str" ColumnName="Limit_Str" />
+          <ScalarProperty Name="Limit_Con" ColumnName="Limit_Con" />
+          <ScalarProperty Name="Limit_Lv" ColumnName="Limit_Lv" />
+          <ScalarProperty Name="EquipmentPrototype_ID" ColumnName="EquipmentPrototype_ID" />
+          <ScalarProperty Name="EquipmentPrototypeLimit_ID" ColumnName="EquipmentPrototypeLimit_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

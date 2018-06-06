@@ -26,10 +26,8 @@ namespace Dragon_API.Controllers
     {
         #region 資料庫連線物件
         GenericRepository<MemberRole> MemberRole_db = new GenericRepository<MemberRole>();
+        GenericRepository<MemberRole_LvExp> MemberRole_LvExp_db = new GenericRepository<MemberRole_LvExp>();
         #endregion
-
-
-
 
 
         /// <summary>
@@ -61,13 +59,44 @@ namespace Dragon_API.Controllers
                 memberRoleModels.Vit = memberRoleAddPoint.Vit;
                 memberRoleModels.Spd = memberRoleAddPoint.Spd;
 
-                MemberRole_db = new GenericRepository<MemberRole>();
-                MemberRole_db.Update(memberRoleModels);
+                int allpointcanadd = MemberRole_LvExp_db.GetList(e => e.Exp <= memberRoleModels.MemberRole_Exp).Last().Lv * 4 + 26;
 
-                result.result_status = true;
-                result.result_message = "創立角色成功";
 
-                result.result_content = StatusCalc.CalcAll(MemberRole_db.GetList(e => e.Member_ID == MemberInfo.Member_ID && e.Member.Member_Account == tokenac).First());
+                if (allpointcanadd <
+                    memberRoleModels.Con+
+                     memberRoleModels.Int +
+                     memberRoleModels.Str +
+                     memberRoleModels.Vit +
+                     memberRoleModels.Spd
+                 )   
+                {
+                    result.result_status = false;
+                    result.result_message = "配點失敗(點數大於可配額)";
+                }
+                else if(
+                    (memberRoleModels.Con*2 > allpointcanadd)|
+                     (memberRoleModels.Int * 2 > allpointcanadd) |
+                      (memberRoleModels.Str * 2 > allpointcanadd) |
+                       (memberRoleModels.Vit * 2 > allpointcanadd) |
+                        (memberRoleModels.Spd * 2 > allpointcanadd) 
+                    )
+                {
+                    result.result_status = false;
+                    result.result_message = "配點失敗(單項能力過半)";
+                }
+                else
+                {
+                    
+                 //   MemberRole_db = new GenericRepository<MemberRole>();
+                   
+                    MemberRole_db.Update(memberRoleModels);
+
+                    result.result_status = true;
+                    result.result_message = "配點成功";
+
+                    result.result_content = StatusCalc.CalcAll(MemberRole_db.GetList(e => e.Member_ID == MemberInfo.Member_ID && e.Member.Member_Account == tokenac).First());
+
+                }
 
             }
             catch (Exception ex)

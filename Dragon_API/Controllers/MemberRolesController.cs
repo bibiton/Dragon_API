@@ -26,6 +26,7 @@ namespace Dragon_API.Controllers
     {
         #region 資料庫連線物件
         GenericRepository<MemberRole> MemberRole_db = new GenericRepository<MemberRole>();
+        GenericRepository<MemberRole_LvExp> MemberRole_LvExp_db = new GenericRepository<MemberRole_LvExp>();
         #endregion
 
 
@@ -61,6 +62,7 @@ namespace Dragon_API.Controllers
 
                     result.result_status = true;
                     result.result_message = "";
+                    List<MemberRole_LvExp> explist = MemberRole_LvExp_db.GetAll();
                     var rs = MemberRole_db.GetList(e => e.Member_ID==id && e.Member.Member_Account== tokenac).Select(e=> new MemberRoleModels {
                         CreateTime=e.CreateTime,
                         ArenaTitle_ID=e.ArenaTitle_ID,
@@ -71,8 +73,9 @@ namespace Dragon_API.Controllers
                         MemberRole_Golds=e.MemberRole_Golds,
                         MemberRole_ID=e.MemberRole_ID,
                         MemberRole_Name=e.MemberRole_Name,
-                        Member_ID=e.Member_ID
-                    }) ;
+                        Member_ID=e.Member_ID,
+                        MemberRole_Lv = explist.Last(f => f.Exp <= e.MemberRole_Exp).Lv
+                }) ;
                    
                     StatusCalc.CalcAll(MemberRole_db.GetList(e => e.Member_ID == id && e.Member.Member_Account == tokenac).First());
                     result.result_content = rs.ToList() ;
@@ -108,9 +111,9 @@ namespace Dragon_API.Controllers
 
             ResultModel<MemberRoleModels> result = new ResultModel<MemberRoleModels>();
 
-           
-                try
-                {
+
+            try
+            {
                 MemberRole memberRoleModels = new MemberRole();
                 memberRoleModels.Member_ID = MemberInfo.Member_ID;
                 memberRoleModels.CreateTime = DateTime.Now;
@@ -123,15 +126,15 @@ namespace Dragon_API.Controllers
                 memberRoleModels.MemberRole_ID = memberRole.MemberRole_ID;
                 memberRoleModels.MemberRole_Name = memberRole.MemberRole_Name;
 
-                    MemberRole_db.Create(memberRoleModels);
+                MemberRole_db.Create(memberRoleModels);
                 StatusCalc.CalcAll(MemberRole_db.GetList(e => e.Member_ID == MemberInfo.Member_ID && e.Member.Member_Account == tokenac).First());
                 result.result_status = true;
-                    result.result_message = "創立角色成功";
-                    
-                    result.result_content = memberRole;
+                result.result_message = "創立角色成功";
+                memberRole.MemberRole_Lv = MemberRole_LvExp_db.GetList(f => f.Exp <= memberRole.MemberRole_Exp).Last().Lv ;
+                result.result_content = memberRole;
 
-                }
-                catch (Exception ex)
+            }
+            catch (Exception ex)
                 {
                     result.result_status = false;
                     result.result_message = ex.Message;

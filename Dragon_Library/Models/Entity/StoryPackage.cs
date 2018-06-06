@@ -18,6 +18,7 @@ namespace Dragon_Library.Models.Entity
         public StoryPackage()
         {
             this.StoryStoreInfo = new HashSet<StoryStoreInfo>();
+            this.EquipmentPrototype = new HashSet<EquipmentPrototype>();
         }
     
         public int StoryPackage_ID { get; set; }
@@ -27,5 +28,7 @@ namespace Dragon_Library.Models.Entity
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StoryStoreInfo> StoryStoreInfo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EquipmentPrototype> EquipmentPrototype { get; set; }
     }
 }

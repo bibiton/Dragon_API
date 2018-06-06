@@ -24,6 +24,8 @@ namespace Dragon_Library.API
         public int MemberRole_Golds { get; set; }
         /// <summary>經驗值</summary>
         public int MemberRole_Exp { get; set; }
+        /// <summary>等級區間</summary>
+        public int MemberRole_Lv { get; set; }
         /// <summary>對戰點</summary>
         public int MemberRole_ArenaPoints { get; set; }
         /// <summary>對戰頭銜</summary>

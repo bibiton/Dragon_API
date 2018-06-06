@@ -44,5 +44,13 @@ namespace Dragon_Library.Models.Entity
         public virtual DbSet<SubjectFile> SubjectFile { get; set; }
         public virtual DbSet<SubjectType> SubjectType { get; set; }
         public virtual DbSet<Options> Options { get; set; }
+        public virtual DbSet<MemberRole_LvExp> MemberRole_LvExp { get; set; }
+        public virtual DbSet<EquipmentBaseElement> EquipmentBaseElement { get; set; }
+        public virtual DbSet<EquipmentLevel> EquipmentLevel { get; set; }
+        public virtual DbSet<EquipmentMappingP2E> EquipmentMappingP2E { get; set; }
+        public virtual DbSet<EquipmentPrototype> EquipmentPrototype { get; set; }
+        public virtual DbSet<EquipmentPrototypeLevelRare> EquipmentPrototypeLevelRare { get; set; }
+        public virtual DbSet<EquipmentType> EquipmentType { get; set; }
+        public virtual DbSet<EquipmentPrototypeLimit> EquipmentPrototypeLimit { get; set; }
     }
 }

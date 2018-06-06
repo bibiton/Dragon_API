@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DragonFighterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="DragonFighterEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DragonFighterEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="ArenaTitle" EntityType="DragonFighterModel.ArenaTitle" />
     <EntitySet Name="Member" EntityType="DragonFighterModel.Member" />
     <EntitySet Name="MemberLog" EntityType="DragonFighterModel.MemberLog" />
@@ -78,6 +78,47 @@
     <AssociationSet Name="FK_Subject_SubjectType" Association="DragonFighterModel.FK_Subject_SubjectType">
       <End Role="SubjectType" EntitySet="SubjectType" />
       <End Role="Subject" EntitySet="Subject" />
+    </AssociationSet>
+    <EntitySet Name="Options" EntityType="DragonFighterModel.Options" />
+    <AssociationSet Name="FK_Subject_Option" Association="DragonFighterModel.FK_Subject_Option">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Options" EntitySet="Options" />
+    </AssociationSet>
+    <EntitySet Name="MemberRole_LvExp" EntityType="DragonFighterModel.MemberRole_LvExp" />
+    <EntitySet Name="EquipmentBaseElement" EntityType="DragonFighterModel.EquipmentBaseElement" />
+    <EntitySet Name="EquipmentLevel" EntityType="DragonFighterModel.EquipmentLevel" />
+    <EntitySet Name="EquipmentMappingP2E" EntityType="DragonFighterModel.EquipmentMappingP2E" />
+    <EntitySet Name="EquipmentPrototype" EntityType="DragonFighterModel.EquipmentPrototype" />
+    <EntitySet Name="EquipmentPrototypeLevelRare" EntityType="DragonFighterModel.EquipmentPrototypeLevelRare" />
+    <EntitySet Name="EquipmentType" EntityType="DragonFighterModel.EquipmentType" />
+    <AssociationSet Name="FK_EquipmentMappingP2E_EquipmentBaseElement" Association="DragonFighterModel.FK_EquipmentMappingP2E_EquipmentBaseElement">
+      <End Role="EquipmentBaseElement" EntitySet="EquipmentBaseElement" />
+      <End Role="EquipmentMappingP2E" EntitySet="EquipmentMappingP2E" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrototypeLevelRare_EquipmentLevel" Association="DragonFighterModel.FK_PrototypeLevelRare_EquipmentLevel">
+      <End Role="EquipmentLevel" EntitySet="EquipmentLevel" />
+      <End Role="EquipmentPrototypeLevelRare" EntitySet="EquipmentPrototypeLevelRare" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipmentMappingP2E_EquipmentPrototype" Association="DragonFighterModel.FK_EquipmentMappingP2E_EquipmentPrototype">
+      <End Role="EquipmentPrototype" EntitySet="EquipmentPrototype" />
+      <End Role="EquipmentMappingP2E" EntitySet="EquipmentMappingP2E" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrototypeLevelRare_EquipmentPrototype" Association="DragonFighterModel.FK_PrototypeLevelRare_EquipmentPrototype">
+      <End Role="EquipmentPrototype" EntitySet="EquipmentPrototype" />
+      <End Role="EquipmentPrototypeLevelRare" EntitySet="EquipmentPrototypeLevelRare" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Story_EquipPrototype" Association="DragonFighterModel.FK_Story_EquipPrototype">
+      <End Role="StoryPackage" EntitySet="StoryPackage" />
+      <End Role="EquipmentPrototype" EntitySet="EquipmentPrototype" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Type_EquipPrototype" Association="DragonFighterModel.FK_Type_EquipPrototype">
+      <End Role="EquipmentType" EntitySet="EquipmentType" />
+      <End Role="EquipmentPrototype" EntitySet="EquipmentPrototype" />
+    </AssociationSet>
+    <EntitySet Name="EquipmentPrototypeLimit" EntityType="DragonFighterModel.EquipmentPrototypeLimit" />
+    <AssociationSet Name="FK_EquipmentPrototypeLimit_EquipmentPrototype" Association="DragonFighterModel.FK_EquipmentPrototypeLimit_EquipmentPrototype">
+      <End Role="EquipmentPrototype" EntitySet="EquipmentPrototype" />
+      <End Role="EquipmentPrototypeLimit" EntitySet="EquipmentPrototypeLimit" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="ArenaTitle">
@@ -201,6 +242,7 @@
     <Property Name="MainMap" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="MainMap_Size" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="StoryStoreInfo" Relationship="DragonFighterModel.FK_StoryPackage_Store" FromRole="StoryPackage" ToRole="StoryStoreInfo" />
+    <NavigationProperty Name="EquipmentPrototype" Relationship="DragonFighterModel.FK_Story_EquipPrototype" FromRole="StoryPackage" ToRole="EquipmentPrototype" />
   </EntityType>
   <EntityType Name="StoryStoreInfo">
     <Key>
@@ -266,6 +308,7 @@
     <NavigationProperty Name="SubjectArea" Relationship="DragonFighterModel.FK_Subject_SubjectArea" FromRole="Subject" ToRole="SubjectArea" />
     <NavigationProperty Name="SubjectFile" Relationship="DragonFighterModel.FK_Subject_SubjectFIle" FromRole="Subject" ToRole="SubjectFile" />
     <NavigationProperty Name="SubjectType" Relationship="DragonFighterModel.FK_Subject_SubjectType" FromRole="Subject" ToRole="SubjectType" />
+    <NavigationProperty Name="Options" Relationship="DragonFighterModel.FK_Subject_Option" FromRole="Subject" ToRole="Options" />
   </EntityType>
   <EntityType Name="SubjectArea">
     <Key>
@@ -474,6 +517,203 @@
       </Principal>
       <Dependent Role="Subject">
         <PropertyRef Name="SubjectType_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Options">
+    <Key>
+      <PropertyRef Name="Option_ID" />
+    </Key>
+    <Property Name="Option_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject_ID" Type="Int32" Nullable="false" />
+    <Property Name="Option_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FileName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnswer" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Subject" Relationship="DragonFighterModel.FK_Subject_Option" FromRole="Options" ToRole="Subject" />
+  </EntityType>
+  <Association Name="FK_Subject_Option">
+    <End Type="DragonFighterModel.Subject" Role="Subject" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DragonFighterModel.Options" Role="Options" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Subject_ID" />
+      </Principal>
+      <Dependent Role="Options">
+        <PropertyRef Name="Subject_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MemberRole_LvExp">
+    <Key>
+      <PropertyRef Name="Lv" />
+    </Key>
+    <Property Name="Lv" Type="Int32" Nullable="false" />
+    <Property Name="Exp" Type="Int32" />
+  </EntityType>
+  <EntityType Name="EquipmentBaseElement">
+    <Key>
+      <PropertyRef Name="EquipmentBaseElement_ID" />
+    </Key>
+    <Property Name="EquipmentBaseElement_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentBaseElement_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EquipmentBaseElement_Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EquipmentMappingP2E" Relationship="DragonFighterModel.FK_EquipmentMappingP2E_EquipmentBaseElement" FromRole="EquipmentBaseElement" ToRole="EquipmentMappingP2E" />
+  </EntityType>
+  <EntityType Name="EquipmentLevel">
+    <Key>
+      <PropertyRef Name="EquipmentLevel_ID" />
+    </Key>
+    <Property Name="EquipmentLevel_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Level" Type="Int32" Nullable="false" />
+    <Property Name="AddAttr_Count" Type="Byte" />
+    <Property Name="AddAttrMax" Type="Int16" />
+    <Property Name="AddAttrMin" Type="Int16" />
+    <Property Name="LevelName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EquipmentPrototypeLevelRare" Relationship="DragonFighterModel.FK_PrototypeLevelRare_EquipmentLevel" FromRole="EquipmentLevel" ToRole="EquipmentPrototypeLevelRare" />
+  </EntityType>
+  <EntityType Name="EquipmentMappingP2E">
+    <Key>
+      <PropertyRef Name="EquipmentMappingP2E_ID" />
+    </Key>
+    <Property Name="EquipmentMappingP2E_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentPrototype_ID" Type="Int32" />
+    <Property Name="EquipmentBaseElement_ID" Type="Int32" />
+    <Property Name="MaxValue" Type="Double" />
+    <Property Name="MinValue" Type="Double" />
+    <NavigationProperty Name="EquipmentBaseElement" Relationship="DragonFighterModel.FK_EquipmentMappingP2E_EquipmentBaseElement" FromRole="EquipmentMappingP2E" ToRole="EquipmentBaseElement" />
+    <NavigationProperty Name="EquipmentPrototype" Relationship="DragonFighterModel.FK_EquipmentMappingP2E_EquipmentPrototype" FromRole="EquipmentMappingP2E" ToRole="EquipmentPrototype" />
+  </EntityType>
+  <EntityType Name="EquipmentPrototype">
+    <Key>
+      <PropertyRef Name="EquipmentPrototype_ID" />
+    </Key>
+    <Property Name="EquipmentPrototype_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentPrototype_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StoryPackage_ID" Type="Int32" Nullable="false" />
+    <Property Name="EquipmentType_ID" Type="Int32" Nullable="false" />
+    <Property Name="EquipmentType_Image" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="EquipmentMappingP2E" Relationship="DragonFighterModel.FK_EquipmentMappingP2E_EquipmentPrototype" FromRole="EquipmentPrototype" ToRole="EquipmentMappingP2E" />
+    <NavigationProperty Name="EquipmentPrototypeLevelRare" Relationship="DragonFighterModel.FK_PrototypeLevelRare_EquipmentPrototype" FromRole="EquipmentPrototype" ToRole="EquipmentPrototypeLevelRare" />
+    <NavigationProperty Name="StoryPackage" Relationship="DragonFighterModel.FK_Story_EquipPrototype" FromRole="EquipmentPrototype" ToRole="StoryPackage" />
+    <NavigationProperty Name="EquipmentType" Relationship="DragonFighterModel.FK_Type_EquipPrototype" FromRole="EquipmentPrototype" ToRole="EquipmentType" />
+    <NavigationProperty Name="EquipmentPrototypeLimit" Relationship="DragonFighterModel.FK_EquipmentPrototypeLimit_EquipmentPrototype" FromRole="EquipmentPrototype" ToRole="EquipmentPrototypeLimit" />
+  </EntityType>
+  <EntityType Name="EquipmentPrototypeLevelRare">
+    <Key>
+      <PropertyRef Name="EquipmentPrototypeLevelRare_ID" />
+    </Key>
+    <Property Name="EquipmentPrototypeLevelRare_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentPrototype_ID" Type="Int32" />
+    <Property Name="EquipmentLevel_ID" Type="Int32" />
+    <Property Name="ProbabilityPercent" Type="Double" />
+    <NavigationProperty Name="EquipmentLevel" Relationship="DragonFighterModel.FK_PrototypeLevelRare_EquipmentLevel" FromRole="EquipmentPrototypeLevelRare" ToRole="EquipmentLevel" />
+    <NavigationProperty Name="EquipmentPrototype" Relationship="DragonFighterModel.FK_PrototypeLevelRare_EquipmentPrototype" FromRole="EquipmentPrototypeLevelRare" ToRole="EquipmentPrototype" />
+  </EntityType>
+  <EntityType Name="EquipmentType">
+    <Key>
+      <PropertyRef Name="EquipmentType_ID" />
+    </Key>
+    <Property Name="EquipmentType_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentType_Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EquipmentPrototype" Relationship="DragonFighterModel.FK_Type_EquipPrototype" FromRole="EquipmentType" ToRole="EquipmentPrototype" />
+  </EntityType>
+  <Association Name="FK_EquipmentMappingP2E_EquipmentBaseElement">
+    <End Type="DragonFighterModel.EquipmentBaseElement" Role="EquipmentBaseElement" Multiplicity="0..1" />
+    <End Type="DragonFighterModel.EquipmentMappingP2E" Role="EquipmentMappingP2E" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentBaseElement">
+        <PropertyRef Name="EquipmentBaseElement_ID" />
+      </Principal>
+      <Dependent Role="EquipmentMappingP2E">
+        <PropertyRef Name="EquipmentBaseElement_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrototypeLevelRare_EquipmentLevel">
+    <End Type="DragonFighterModel.EquipmentLevel" Role="EquipmentLevel" Multiplicity="0..1" />
+    <End Type="DragonFighterModel.EquipmentPrototypeLevelRare" Role="EquipmentPrototypeLevelRare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentLevel">
+        <PropertyRef Name="EquipmentLevel_ID" />
+      </Principal>
+      <Dependent Role="EquipmentPrototypeLevelRare">
+        <PropertyRef Name="EquipmentLevel_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipmentMappingP2E_EquipmentPrototype">
+    <End Type="DragonFighterModel.EquipmentPrototype" Role="EquipmentPrototype" Multiplicity="0..1" />
+    <End Type="DragonFighterModel.EquipmentMappingP2E" Role="EquipmentMappingP2E" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentPrototype">
+        <PropertyRef Name="EquipmentPrototype_ID" />
+      </Principal>
+      <Dependent Role="EquipmentMappingP2E">
+        <PropertyRef Name="EquipmentPrototype_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrototypeLevelRare_EquipmentPrototype">
+    <End Type="DragonFighterModel.EquipmentPrototype" Role="EquipmentPrototype" Multiplicity="0..1" />
+    <End Type="DragonFighterModel.EquipmentPrototypeLevelRare" Role="EquipmentPrototypeLevelRare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentPrototype">
+        <PropertyRef Name="EquipmentPrototype_ID" />
+      </Principal>
+      <Dependent Role="EquipmentPrototypeLevelRare">
+        <PropertyRef Name="EquipmentPrototype_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Story_EquipPrototype">
+    <End Type="DragonFighterModel.StoryPackage" Role="StoryPackage" Multiplicity="1" />
+    <End Type="DragonFighterModel.EquipmentPrototype" Role="EquipmentPrototype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoryPackage">
+        <PropertyRef Name="StoryPackage_ID" />
+      </Principal>
+      <Dependent Role="EquipmentPrototype">
+        <PropertyRef Name="StoryPackage_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Type_EquipPrototype">
+    <End Type="DragonFighterModel.EquipmentType" Role="EquipmentType" Multiplicity="1" />
+    <End Type="DragonFighterModel.EquipmentPrototype" Role="EquipmentPrototype" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentType">
+        <PropertyRef Name="EquipmentType_ID" />
+      </Principal>
+      <Dependent Role="EquipmentPrototype">
+        <PropertyRef Name="EquipmentType_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EquipmentPrototypeLimit">
+    <Key>
+      <PropertyRef Name="EquipmentPrototypeLimit_ID" />
+    </Key>
+    <Property Name="EquipmentPrototypeLimit_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentPrototype_ID" Type="Int32" />
+    <Property Name="Limit_Lv" Type="Int32" />
+    <Property Name="Limit_Con" Type="Int32" />
+    <Property Name="Limit_Str" Type="Int32" />
+    <Property Name="Limit_Vit" Type="Int32" />
+    <Property Name="Limit_Spd" Type="Int32" />
+    <Property Name="Limit_Int" Type="Int32" />
+    <NavigationProperty Name="EquipmentPrototype" Relationship="DragonFighterModel.FK_EquipmentPrototypeLimit_EquipmentPrototype" FromRole="EquipmentPrototypeLimit" ToRole="EquipmentPrototype" />
+  </EntityType>
+  <Association Name="FK_EquipmentPrototypeLimit_EquipmentPrototype">
+    <End Type="DragonFighterModel.EquipmentPrototype" Role="EquipmentPrototype" Multiplicity="0..1" />
+    <End Type="DragonFighterModel.EquipmentPrototypeLimit" Role="EquipmentPrototypeLimit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentPrototype">
+        <PropertyRef Name="EquipmentPrototype_ID" />
+      </Principal>
+      <Dependent Role="EquipmentPrototypeLimit">
+        <PropertyRef Name="EquipmentPrototype_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

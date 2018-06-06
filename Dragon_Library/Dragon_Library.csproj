@@ -90,6 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\AuthModels.cs" />
+    <Compile Include="API\ExpModels.cs" />
+    <Compile Include="API\MemberModels.cs" />
     <Compile Include="API\MemberRoleAddPointModels.cs" />
     <Compile Include="API\MemberRoleModels.cs" />
     <Compile Include="API\MemberRoleImgModels.cs" />
@@ -120,6 +122,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DragonModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\EquipmentBaseElement.cs">
+      <DependentUpon>DragonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\EquipmentLevel.cs">
+      <DependentUpon>DragonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\EquipmentMappingP2E.cs">
+      <DependentUpon>DragonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\EquipmentPrototype.cs">
+      <DependentUpon>DragonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\EquipmentPrototypeLevelRare.cs">
+      <DependentUpon>DragonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\EquipmentPrototypeLimit.cs">
+      <DependentUpon>DragonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\EquipmentType.cs">
+      <DependentUpon>DragonModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entity\Member.cs">
       <DependentUpon>DragonModel.tt</DependentUpon>
     </Compile>
@@ -136,6 +159,9 @@
       <DependentUpon>DragonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\MemberRoleStatus.cs">
+      <DependentUpon>DragonModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\MemberRole_LvExp.cs">
       <DependentUpon>DragonModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\Options.cs">

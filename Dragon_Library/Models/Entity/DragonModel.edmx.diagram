@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9c4de585512740bdb37c28f2df40d1f2" Name="Diagram1" ZoomLevel="40">
+      <Diagram DiagramId="9c4de585512740bdb37c28f2df40d1f2" Name="Diagram1" ZoomLevel="65">
         <EntityTypeShape EntityType="DragonFighterModel.ArenaTitle" Width="1.5" PointX="0.75" PointY="1.625" />
         <EntityTypeShape EntityType="DragonFighterModel.Member" Width="1.5" PointX="0.75" PointY="4.25" />
         <EntityTypeShape EntityType="DragonFighterModel.MemberLog" Width="1.5" PointX="3" PointY="10.25" />
@@ -40,6 +40,21 @@
         <AssociationConnector Association="DragonFighterModel.FK_Subject_SubjectType" />
         <EntityTypeShape EntityType="DragonFighterModel.Options" Width="1.5" PointX="10.25" PointY="11.875" />
         <AssociationConnector Association="DragonFighterModel.FK_Subject_Option" />
+        <EntityTypeShape EntityType="DragonFighterModel.MemberRole_LvExp" Width="1.5" PointX="12.375" PointY="10.75" />
+        <EntityTypeShape EntityType="DragonFighterModel.EquipmentBaseElement" Width="1.5" PointX="16" PointY="13.125" />
+        <EntityTypeShape EntityType="DragonFighterModel.EquipmentLevel" Width="1.5" PointX="16" PointY="9.875" />
+        <EntityTypeShape EntityType="DragonFighterModel.EquipmentMappingP2E" Width="1.5" PointX="18.25" PointY="5.875" />
+        <EntityTypeShape EntityType="DragonFighterModel.EquipmentPrototype" Width="1.5" PointX="16" PointY="5.75" />
+        <EntityTypeShape EntityType="DragonFighterModel.EquipmentPrototypeLevelRare" Width="1.5" PointX="18.25" PointY="3" />
+        <EntityTypeShape EntityType="DragonFighterModel.EquipmentType" Width="1.5" PointX="13.75" PointY="13.25" />
+        <AssociationConnector Association="DragonFighterModel.FK_EquipmentMappingP2E_EquipmentBaseElement" />
+        <AssociationConnector Association="DragonFighterModel.FK_PrototypeLevelRare_EquipmentLevel" />
+        <AssociationConnector Association="DragonFighterModel.FK_EquipmentMappingP2E_EquipmentPrototype" />
+        <AssociationConnector Association="DragonFighterModel.FK_PrototypeLevelRare_EquipmentPrototype" />
+        <AssociationConnector Association="DragonFighterModel.FK_Story_EquipPrototype" />
+        <AssociationConnector Association="DragonFighterModel.FK_Type_EquipPrototype" />
+        <EntityTypeShape EntityType="DragonFighterModel.EquipmentPrototypeLimit" Width="1.5" PointX="18.75" PointY="9.625" />
+        <AssociationConnector Association="DragonFighterModel.FK_EquipmentPrototypeLimit_EquipmentPrototype" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
