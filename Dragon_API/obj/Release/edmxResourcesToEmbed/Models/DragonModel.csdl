@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DragonFighterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BookEdition">
+    <Key>
+      <PropertyRef Name="BookEdition_ID" />
+    </Key>
+    <Property Name="BookEdition_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BookEdition_Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Course" Relationship="Self.FK_BookEdition_Course" FromRole="BookEdition" ToRole="Course" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Course_ID" />
+    </Key>
+    <Property Name="Course_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Parent_ID" Type="Int32" />
+    <Property Name="BookEdition_ID" Type="Int32" Nullable="false" />
+    <Property Name="Course_Level" Type="Byte" Nullable="false" />
+    <Property Name="Course_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Course_No" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Course_Image" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Sort" Type="Byte" />
+    <NavigationProperty Name="BookEdition" Relationship="Self.FK_BookEdition_Course" FromRole="Course" ToRole="BookEdition" />
+    <NavigationProperty Name="Course1" Relationship="Self.FK_Course_Course" FromRole="Course" ToRole="Course1" />
+    <NavigationProperty Name="Course2" Relationship="Self.FK_Course_Course" FromRole="Course1" ToRole="Course" />
+    <NavigationProperty Name="CourseGrammarDetail" Relationship="Self.FK_Course_GrammarDetail" FromRole="Course" ToRole="CourseGrammarDetail" />
+    <NavigationProperty Name="CourseSentenceDetail" Relationship="Self.FK_Course_SentenceDetail" FromRole="Course" ToRole="CourseSentenceDetail" />
+    <NavigationProperty Name="CourseWordDetail" Relationship="Self.FK_Course_WordDetail" FromRole="Course" ToRole="CourseWordDetail" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Member_Course" FromRole="Course" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="CourseGrammar">
+    <Key>
+      <PropertyRef Name="CourseGrammar_ID" />
+    </Key>
+    <Property Name="CourseGrammar_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseGrammar_Content" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CourseGrammarDetail" Relationship="Self.FK_Grammar_GrammarDetail" FromRole="CourseGrammar" ToRole="CourseGrammarDetail" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_Subject_CourseGrammar" FromRole="CourseGrammar" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="CourseGrammarDetail">
+    <Key>
+      <PropertyRef Name="CourseGrammarDetail_ID" />
+    </Key>
+    <Property Name="CourseGrammarDetail_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Course_ID" Type="Int32" Nullable="false" />
+    <Property Name="CourseGrammar_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Course" Relationship="Self.FK_Course_GrammarDetail" FromRole="CourseGrammarDetail" ToRole="Course" />
+    <NavigationProperty Name="CourseGrammar" Relationship="Self.FK_Grammar_GrammarDetail" FromRole="CourseGrammarDetail" ToRole="CourseGrammar" />
+  </EntityType>
+  <EntityType Name="CourseSentence">
+    <Key>
+      <PropertyRef Name="CourseSentence_ID" />
+    </Key>
+    <Property Name="CourseSentence_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseSentence_Content" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CourseSentenceDetail" Relationship="Self.FK_Sentence_SentenceDetail" FromRole="CourseSentence" ToRole="CourseSentenceDetail" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_Subject_CourseSentence" FromRole="CourseSentence" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="CourseSentenceDetail">
+    <Key>
+      <PropertyRef Name="CourseSentenceDetail_ID" />
+    </Key>
+    <Property Name="CourseSentenceDetail_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Course_ID" Type="Int32" Nullable="false" />
+    <Property Name="CourseSentence_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Course" Relationship="Self.FK_Course_SentenceDetail" FromRole="CourseSentenceDetail" ToRole="Course" />
+    <NavigationProperty Name="CourseSentence" Relationship="Self.FK_Sentence_SentenceDetail" FromRole="CourseSentenceDetail" ToRole="CourseSentence" />
+  </EntityType>
+  <EntityType Name="CourseWord">
+    <Key>
+      <PropertyRef Name="CourseWord_ID" />
+    </Key>
+    <Property Name="CourseWord_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseWord_Content" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_Subject_CourseWord" FromRole="CourseWord" ToRole="Subject" />
+    <NavigationProperty Name="CourseWordDetail" Relationship="Self.FK_Word_WordDetail" FromRole="CourseWord" ToRole="CourseWordDetail" />
+  </EntityType>
+  <EntityType Name="CourseWordDetail">
+    <Key>
+      <PropertyRef Name="CourseWordDetail_ID" />
+    </Key>
+    <Property Name="CourseWordDetail_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Course_ID" Type="Int32" Nullable="false" />
+    <Property Name="CourseWord_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Course" Relationship="Self.FK_Course_WordDetail" FromRole="CourseWordDetail" ToRole="Course" />
+    <NavigationProperty Name="CourseWord" Relationship="Self.FK_Word_WordDetail" FromRole="CourseWordDetail" ToRole="CourseWord" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="Member_ID" />
+    </Key>
+    <Property Name="Member_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Student_ID" Type="Int32" />
+    <Property Name="Member_Account" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Member_Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Course_ID" Type="Int32" />
+    <NavigationProperty Name="Course" Relationship="Self.FK_Member_Course" FromRole="Member" ToRole="Course" />
+    <NavigationProperty Name="MemberRole" Relationship="Self.FK_Member_MemberRole" FromRole="Member" ToRole="MemberRole" />
+  </EntityType>
+  <EntityType Name="MemberRole">
+    <Key>
+      <PropertyRef Name="MemberRole_ID" />
+    </Key>
+    <Property Name="MemberRole_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberRole_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MemberRole_Gender" Type="Boolean" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MemberRole_Golds" Type="Int32" Nullable="false" />
+    <Property Name="MemberRole_Exp" Type="Int32" Nullable="false" />
+    <Property Name="MemberRole_ArenaPoints" Type="Int32" Nullable="false" />
+    <Property Name="ArenaTitle_ID" Type="Int32" Nullable="false" />
+    <Property Name="Member_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Member_MemberRole" FromRole="MemberRole" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="MemberRoleAttrs">
+    <Key>
+      <PropertyRef Name="MemberRoleAttrs_ID" />
+    </Key>
+    <Property Name="MemberRoleAttrs_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberRoleAttrs_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Options">
+    <Key>
+      <PropertyRef Name="Option_ID" />
+    </Key>
+    <Property Name="Option_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject_ID" Type="Int32" Nullable="false" />
+    <Property Name="Option_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FileName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnswer" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_Subject_Option" FromRole="Options" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="Subject_ID" />
+    </Key>
+    <Property Name="Subject_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubjectArea_ID" Type="Int32" Nullable="false" />
+    <Property Name="SubjectType_ID" Type="Int16" Nullable="false" />
+    <Property Name="Subject_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Excel_idx" Type="Int32" />
+    <Property Name="Article" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Article_Attach" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Template" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CourseWord_ID" Type="Int32" />
+    <Property Name="CourseSentence_ID" Type="Int32" />
+    <Property Name="CourseGrammar_ID" Type="Int32" />
+    <NavigationProperty Name="CourseGrammar" Relationship="Self.FK_Subject_CourseGrammar" FromRole="Subject" ToRole="CourseGrammar" />
+    <NavigationProperty Name="CourseSentence" Relationship="Self.FK_Subject_CourseSentence" FromRole="Subject" ToRole="CourseSentence" />
+    <NavigationProperty Name="CourseWord" Relationship="Self.FK_Subject_CourseWord" FromRole="Subject" ToRole="CourseWord" />
+    <NavigationProperty Name="Options" Relationship="Self.FK_Subject_Option" FromRole="Subject" ToRole="Options" />
+    <NavigationProperty Name="SubjectArea" Relationship="Self.FK_Subject_SubjectArea" FromRole="Subject" ToRole="SubjectArea" />
+    <NavigationProperty Name="SubjectFile" Relationship="Self.FK_Subject_SubjectFIle" FromRole="Subject" ToRole="SubjectFile" />
+    <NavigationProperty Name="SubjectType" Relationship="Self.FK_Subject_SubjectType" FromRole="Subject" ToRole="SubjectType" />
+  </EntityType>
+  <EntityType Name="SubjectArea">
+    <Key>
+      <PropertyRef Name="SubjectArea_ID" />
+    </Key>
+    <Property Name="SubjectArea_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubjectArea_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_Subject_SubjectArea" FromRole="SubjectArea" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="SubjectFile">
+    <Key>
+      <PropertyRef Name="SubjectFile_ID" />
+    </Key>
+    <Property Name="SubjectFile_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Subject_ID" Type="Int32" Nullable="false" />
+    <Property Name="FileName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FileType" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_Subject_SubjectFIle" FromRole="SubjectFile" ToRole="Subject" />
+  </EntityType>
+  <EntityType Name="SubjectType">
+    <Key>
+      <PropertyRef Name="SubjectType_ID" />
+    </Key>
+    <Property Name="SubjectType_ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubjectType_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Subject" Relationship="Self.FK_Subject_SubjectType" FromRole="SubjectType" ToRole="Subject" />
+  </EntityType>
+  <Association Name="FK_BookEdition_Course">
+    <End Role="BookEdition" Type="Self.BookEdition" Multiplicity="1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BookEdition">
+        <PropertyRef Name="BookEdition_ID" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="BookEdition_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Course1" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="Course1">
+        <PropertyRef Name="Parent_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_GrammarDetail">
+    <End Role="Course" Type="Self.Course" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CourseGrammarDetail" Type="Self.CourseGrammarDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="CourseGrammarDetail">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_SentenceDetail">
+    <End Role="Course" Type="Self.Course" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CourseSentenceDetail" Type="Self.CourseSentenceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="CourseSentenceDetail">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_WordDetail">
+    <End Role="Course" Type="Self.Course" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CourseWordDetail" Type="Self.CourseWordDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="CourseWordDetail">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Member_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Member" Type="Self.Member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Grammar_GrammarDetail">
+    <End Role="CourseGrammar" Type="Self.CourseGrammar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CourseGrammarDetail" Type="Self.CourseGrammarDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseGrammar">
+        <PropertyRef Name="CourseGrammar_ID" />
+      </Principal>
+      <Dependent Role="CourseGrammarDetail">
+        <PropertyRef Name="CourseGrammar_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_CourseGrammar">
+    <End Role="CourseGrammar" Type="Self.CourseGrammar" Multiplicity="0..1" />
+    <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseGrammar">
+        <PropertyRef Name="CourseGrammar_ID" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="CourseGrammar_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sentence_SentenceDetail">
+    <End Role="CourseSentence" Type="Self.CourseSentence" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CourseSentenceDetail" Type="Self.CourseSentenceDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseSentence">
+        <PropertyRef Name="CourseSentence_ID" />
+      </Principal>
+      <Dependent Role="CourseSentenceDetail">
+        <PropertyRef Name="CourseSentence_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_CourseSentence">
+    <End Role="CourseSentence" Type="Self.CourseSentence" Multiplicity="0..1" />
+    <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseSentence">
+        <PropertyRef Name="CourseSentence_ID" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="CourseSentence_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_CourseWord">
+    <End Role="CourseWord" Type="Self.CourseWord" Multiplicity="0..1" />
+    <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseWord">
+        <PropertyRef Name="CourseWord_ID" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="CourseWord_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Word_WordDetail">
+    <End Role="CourseWord" Type="Self.CourseWord" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CourseWordDetail" Type="Self.CourseWordDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CourseWord">
+        <PropertyRef Name="CourseWord_ID" />
+      </Principal>
+      <Dependent Role="CourseWordDetail">
+        <PropertyRef Name="CourseWord_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Member_MemberRole">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="MemberRole" Type="Self.MemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="Member_ID" />
+      </Principal>
+      <Dependent Role="MemberRole">
+        <PropertyRef Name="Member_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_Option">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Options" Type="Self.Options" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Subject_ID" />
+      </Principal>
+      <Dependent Role="Options">
+        <PropertyRef Name="Subject_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_SubjectArea">
+    <End Role="SubjectArea" Type="Self.SubjectArea" Multiplicity="1" />
+    <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectArea">
+        <PropertyRef Name="SubjectArea_ID" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="SubjectArea_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_SubjectFIle">
+    <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+    <End Role="SubjectFile" Type="Self.SubjectFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subject">
+        <PropertyRef Name="Subject_ID" />
+      </Principal>
+      <Dependent Role="SubjectFile">
+        <PropertyRef Name="Subject_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Subject_SubjectType">
+    <End Role="SubjectType" Type="Self.SubjectType" Multiplicity="1" />
+    <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectType">
+        <PropertyRef Name="SubjectType_ID" />
+      </Principal>
+      <Dependent Role="Subject">
+        <PropertyRef Name="SubjectType_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DragonFighterEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BookEdition" EntityType="Self.BookEdition" />
+    <EntitySet Name="Course" EntityType="Self.Course" />
+    <EntitySet Name="CourseGrammar" EntityType="Self.CourseGrammar" />
+    <EntitySet Name="CourseGrammarDetail" EntityType="Self.CourseGrammarDetail" />
+    <EntitySet Name="CourseSentence" EntityType="Self.CourseSentence" />
+    <EntitySet Name="CourseSentenceDetail" EntityType="Self.CourseSentenceDetail" />
+    <EntitySet Name="CourseWord" EntityType="Self.CourseWord" />
+    <EntitySet Name="CourseWordDetail" EntityType="Self.CourseWordDetail" />
+    <EntitySet Name="Member" EntityType="Self.Member" />
+    <EntitySet Name="MemberRole" EntityType="Self.MemberRole" />
+    <EntitySet Name="MemberRoleAttrs" EntityType="Self.MemberRoleAttrs" />
+    <EntitySet Name="Options" EntityType="Self.Options" />
+    <EntitySet Name="Subject" EntityType="Self.Subject" />
+    <EntitySet Name="SubjectArea" EntityType="Self.SubjectArea" />
+    <EntitySet Name="SubjectFile" EntityType="Self.SubjectFile" />
+    <EntitySet Name="SubjectType" EntityType="Self.SubjectType" />
+    <AssociationSet Name="FK_BookEdition_Course" Association="Self.FK_BookEdition_Course">
+      <End Role="BookEdition" EntitySet="BookEdition" />
+      <End Role="Course" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Course" Association="Self.FK_Course_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Course1" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_GrammarDetail" Association="Self.FK_Course_GrammarDetail">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="CourseGrammarDetail" EntitySet="CourseGrammarDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_SentenceDetail" Association="Self.FK_Course_SentenceDetail">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="CourseSentenceDetail" EntitySet="CourseSentenceDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_WordDetail" Association="Self.FK_Course_WordDetail">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="CourseWordDetail" EntitySet="CourseWordDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Member_Course" Association="Self.FK_Member_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Member" EntitySet="Member" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Grammar_GrammarDetail" Association="Self.FK_Grammar_GrammarDetail">
+      <End Role="CourseGrammar" EntitySet="CourseGrammar" />
+      <End Role="CourseGrammarDetail" EntitySet="CourseGrammarDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_CourseGrammar" Association="Self.FK_Subject_CourseGrammar">
+      <End Role="CourseGrammar" EntitySet="CourseGrammar" />
+      <End Role="Subject" EntitySet="Subject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sentence_SentenceDetail" Association="Self.FK_Sentence_SentenceDetail">
+      <End Role="CourseSentence" EntitySet="CourseSentence" />
+      <End Role="CourseSentenceDetail" EntitySet="CourseSentenceDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_CourseSentence" Association="Self.FK_Subject_CourseSentence">
+      <End Role="CourseSentence" EntitySet="CourseSentence" />
+      <End Role="Subject" EntitySet="Subject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_CourseWord" Association="Self.FK_Subject_CourseWord">
+      <End Role="CourseWord" EntitySet="CourseWord" />
+      <End Role="Subject" EntitySet="Subject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Word_WordDetail" Association="Self.FK_Word_WordDetail">
+      <End Role="CourseWord" EntitySet="CourseWord" />
+      <End Role="CourseWordDetail" EntitySet="CourseWordDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Member_MemberRole" Association="Self.FK_Member_MemberRole">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="MemberRole" EntitySet="MemberRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_Option" Association="Self.FK_Subject_Option">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="Options" EntitySet="Options" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_SubjectArea" Association="Self.FK_Subject_SubjectArea">
+      <End Role="SubjectArea" EntitySet="SubjectArea" />
+      <End Role="Subject" EntitySet="Subject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_SubjectFIle" Association="Self.FK_Subject_SubjectFIle">
+      <End Role="Subject" EntitySet="Subject" />
+      <End Role="SubjectFile" EntitySet="SubjectFile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Subject_SubjectType" Association="Self.FK_Subject_SubjectType">
+      <End Role="SubjectType" EntitySet="SubjectType" />
+      <End Role="Subject" EntitySet="Subject" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

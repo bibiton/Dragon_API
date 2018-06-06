@@ -1,0 +1,331 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Dragon_Library</name>
+    </assembly>
+    <members>
+        <member name="P:Dragon_Library.API.ServerToken.server_account">
+            <summary>登入用帳號</summary>
+        </member>
+        <member name="P:Dragon_Library.API.ServerToken.server_password">
+            <summary>登入用密碼</summary>
+        </member>
+        <member name="T:Dragon_Library.API.ServerTokenResult">
+            <summary>
+            ServerTokenResult
+            </summary>
+        </member>
+        <member name="P:Dragon_Library.API.ServerTokenResult.result_status">
+            <summary>API資料回應狀態</summary>
+        </member>
+        <member name="P:Dragon_Library.API.ServerTokenResult.result_message">
+            <summary>API資料回應信息</summary>
+        </member>
+        <member name="P:Dragon_Library.API.ServerTokenResult.result_content">
+            <summary>API資料回應內容</summary>
+        </member>
+        <member name="T:Dragon_Library.API.MemberRoleAddPointModels">
+            <summary>
+            角色配點
+            </summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleAddPointModels.MemberRole_ID">
+            <summary>角色編號</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleAddPointModels.HP">
+            <summary>體力</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleAddPointModels.AP">
+            <summary>力量</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleAddPointModels.DP">
+            <summary>強度</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleAddPointModels.SP">
+            <summary>速度</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleAddPointModels.MP">
+            <summary>魔法</summary>
+        </member>
+        <member name="T:Dragon_Library.API.MemberRoleModels">
+            <summary>
+            角色頭像
+            </summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleModels.MemberRole_ID">
+            <summary>角色編號</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleModels.MemberRole_Name">
+            <summary>角色名稱</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleModels.MemberRole_Gender">
+            <summary>角色性別</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleModels.CreateTime">
+            <summary>角色創建時間</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleModels.MemberRole_Golds">
+            <summary>金幣數</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleModels.MemberRole_Exp">
+            <summary>經驗值</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleModels.MemberRole_ArenaPoints">
+            <summary>對戰點</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleModels.ArenaTitle_ID">
+            <summary>對戰頭銜</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleModels.Member_ID">
+            <summary>帳號編號</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleModels.MemberRoleImg_ID">
+            <summary>角色頭像</summary>
+        </member>
+        <member name="T:Dragon_Library.API.MemberRoleImgModels">
+            <summary>
+            角色頭像
+            </summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleImgModels.MemberRoleImg_ID">
+            <summary>頭像編號</summary>
+        </member>
+        <member name="P:Dragon_Library.API.MemberRoleImgModels.MemberRoleImg_URL">
+            <summary>頭像圖檔路徑</summary>
+        </member>
+        <member name="T:Dragon_Library.API.IntroduceModels">
+            <summary>
+            介紹圖文資料
+            </summary>
+        </member>
+        <member name="P:Dragon_Library.API.IntroduceModels.StoryStoreInfo_ID">
+            <summary>場景編號</summary>
+        </member>
+        <member name="P:Dragon_Library.API.IntroduceModels.Store_Name">
+            <summary>場景名稱</summary>
+        </member>
+        <member name="P:Dragon_Library.API.IntroduceModels.StoreType">
+            <summary>場景類別</summary>
+        </member>
+        <member name="P:Dragon_Library.API.IntroduceModels.Content">
+            <summary>場景文字</summary>
+        </member>
+        <member name="P:Dragon_Library.API.IntroduceModels.Img">
+            <summary>場景圖片</summary>
+        </member>
+        <member name="P:Dragon_Library.API.IntroduceModels.Sort">
+            <summary>排序</summary>
+        </member>
+        <member name="P:Dragon_Library.API.IntroduceModels.Seconds">
+            <summary>過場秒數</summary>
+        </member>
+        <member name="T:Dragon_Library.API.ResultModel`1">
+            <summary>
+            API回傳結果物件
+            </summary>
+        </member>
+        <member name="P:Dragon_Library.API.ResultModel`1.result_status">
+            <summary>API資料回應狀態</summary>
+        </member>
+        <member name="P:Dragon_Library.API.ResultModel`1.result_message">
+            <summary>API資料回應信息</summary>
+        </member>
+        <member name="P:Dragon_Library.API.ResultModel`1.result_content">
+            <summary>API資料回應內容 (詳見右方模組資訊)</summary>
+        </member>
+        <member name="T:Dragon_Library.Filter.CrossDomainFilterAttribute">
+            <summary>
+            加入跨域的Header
+            </summary>
+        </member>
+        <member name="T:Dragon_Library.Filter.ValidServerTokenFilterAttribute">
+            <summary>
+            驗證Server Token
+            </summary>
+        </member>
+        <member name="M:Dragon_Library.Helper.Image.FileExtensions.GenerateThumbnailImage(System.IO.Stream,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            處理圖片函式，參數：name來源圖面路徑，Path_s輸出圖面路徑，Width指定要縮的寬度，Hight指定要縮的高度，Texts版權文字
+            </summary>
+            <param name="Path">來源圖面路徑</param>
+            <param name="Path_s">輸出圖面路徑</param>
+            <param name="width">指定要縮的寬度</param>
+            <param name="height">指定要縮的高度</param>
+            <param name="Texts">版權文字</param>
+        </member>
+        <member name="M:Dragon_Library.Helper.Image.FileExtensions.GenerateThumbnailImage(System.IO.Stream,System.Int32,System.Int32,System.String)">
+            <summary>
+            處理圖片函式，並回傳串流，參數：name來源圖面路徑，Path_s輸出圖面路徑，Width指定要縮的寬度，Hight指定要縮的高度，Texts版權文字
+            </summary>
+            <param name="File"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="Texts"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Dragon_Library.Models.Interface.IFileRepository">
+            <summary>
+            新增IFileRepository介面，開放兩個參數作為分類依據
+            </summary>
+        </member>
+        <member name="T:Dragon_Library.Repository.FileRepository">
+            <summary>
+            上傳檔案至Azure Storage
+            </summary>
+        </member>
+        <member name="M:Dragon_Library.Repository.GenericRepository`1.Create(`0)">
+            <summary>
+            Creates the specified instance.
+            </summary>
+            <param name="instance">The instance.</param>
+            <exception cref="T:System.ArgumentNullException">instance</exception>
+        </member>
+        <member name="M:Dragon_Library.Repository.GenericRepository`1.Update(`0)">
+            <summary>
+            Updates the specified instance.
+            </summary>
+            <param name="instance">The instance.</param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Dragon_Library.Repository.GenericRepository`1.Delete(`0)">
+            <summary>
+            Deletes the specified instance.
+            </summary>
+            <param name="instance">The instance.</param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Dragon_Library.Repository.GenericRepository`1.DeleteAll(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Deletes all the specified instance.
+            </summary>
+            <param name="instance"></param>
+        </member>
+        <member name="M:Dragon_Library.Repository.GenericRepository`1.Get(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Gets the specified predicate.
+            </summary>
+            <param name="predicate">The predicate.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dragon_Library.Repository.GenericRepository`1.GetList(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Gets the specified predicate.
+            </summary>
+            <param name="predicate">The predicate.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dragon_Library.Repository.GenericRepository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Gets the specified predicate counts.
+            </summary>
+            <param name="predicate">The predicate.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Dragon_Library.Repository.GenericRepository`1.GetAll">
+            <summary>
+            Gets all.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Helper.StatusCalc.StatusCalc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Helper.EncryptExtensions.EncryptExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Helper.EncryptExtensions.EncryptExtensions.AESEncode(System.String,System.String)">
+            <summary>
+            進階加密標準（英語：Advanced Encryption Standard，縮寫：AES），在密碼學中又稱Rijndael加密法
+            </summary>
+            <param name="encryptString">加密字串</param>
+            <param name="encryptKey">加密金鑰</param>
+            <returns></returns>
+        </member>
+        <member name="M:Helper.EncryptExtensions.EncryptExtensions.AESDecode(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="decryptString"></param>
+            <param name="decryptKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Helper.EncryptExtensions.EncryptExtensions.DESEncode(System.String,System.String)">
+            <summary>
+            資料加密標準（英語：Data Encryption Standard，縮寫為 DES）是一種對稱密鑰加密塊密碼演算法
+            </summary>
+            <param name="encryptString"></param>
+            <param name="encryptKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Helper.EncryptExtensions.EncryptExtensions.DESDecode(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="decryptString"></param>
+            <param name="decryptKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Helper.EncryptExtensions.EncryptExtensions.Base64Encode(System.String)">
+            <summary>
+            Base64是一種基於64個可列印字元來表示二進位資料的表示方法。
+            Base64常用於在通常處理文字資料的場合，表示、傳輸、儲存一些二進位資料。包括MIME的email、在XML中儲存複雜資料。
+            </summary>
+            <param name="encryptString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Helper.EncryptExtensions.EncryptExtensions.Base64Decode(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="decryptString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Helper.EncryptExtensions.EncryptExtensions.RSAEncrypt(System.String,System.String)">
+            <summary>
+            RSA加密演算法是一種非對稱加密演算法。在公開金鑰加密和電子商業中RSA被廣泛使用
+            </summary>
+            <param name="s"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Helper.EncryptExtensions.EncryptExtensions.RSADecrypt(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="s"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Helper.EncryptExtensions.EncryptExtensions.MD5(System.String)">
+            <summary>
+            MD5訊息摘要演算法（英語：MD5 Message-Digest Algorithm），一種被廣泛使用的密碼雜湊函式
+            MD5演算法無法防止碰撞，因此無法適用於安全性認證，如SSL公開金鑰認證或是數位簽章等用途
+            不可逆編碼(雜湊值)
+            常用密碼字串儲存, 避免在資料庫裡使用明碼存放密碼, 以防資料庫外洩時, 密碼在第一時間被看光光
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Helper.EncryptExtensions.EncryptExtensions.MD5CSP(System.String)">
+            <summary>
+            不可逆編碼(雜湊值)
+            常用密碼字串儲存, 避免在資料庫裡使用明碼存放密碼, 以防資料庫外洩時, 密碼在第一時間被看光光
+            </summary>
+            <param name="encypStr"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Helper.EncryptExtensions.EncryptExtensions.SHA256(System.String)">
+            <summary>
+            安全雜湊演算法（英語：Secure Hash Algorithm，縮寫為SHA）是一個密碼雜湊函式
+            不可逆編碼(雜湊值)
+            常用密碼字串儲存, 避免在資料庫裡使用明碼存放密碼, 以防資料庫外洩時, 密碼在第一時間被看光光
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

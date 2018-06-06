@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9c4de585512740bdb37c28f2df40d1f2" Name="Diagram1" ZoomLevel="40">
+        <EntityTypeShape EntityType="DragonFighterModel.ArenaTitle" Width="1.5" PointX="0.75" PointY="1.625" />
+        <EntityTypeShape EntityType="DragonFighterModel.Member" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="DragonFighterModel.MemberLog" Width="1.5" PointX="3" PointY="10.25" />
+        <EntityTypeShape EntityType="DragonFighterModel.MemberRole" Width="1.5" PointX="3" PointY="3.375" />
+        <EntityTypeShape EntityType="DragonFighterModel.MemberRoleAttrs" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="DragonFighterModel.MemberRoleImg" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="DragonFighterModel.MemberRoleStatus" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="DragonFighterModel.RoleAttrsDetail" Width="1.5" PointX="8.25" PointY="4.625" />
+        <EntityTypeShape EntityType="DragonFighterModel.StoreType" Width="1.5" PointX="10.75" PointY="2.25" />
+        <EntityTypeShape EntityType="DragonFighterModel.StoryPackage" Width="1.5" PointX="10.75" PointY="6" />
+        <EntityTypeShape EntityType="DragonFighterModel.StoryStoreInfo" Width="1.5" PointX="13" PointY="1.25" />
+        <EntityTypeShape EntityType="DragonFighterModel.StoryTelling" Width="1.5" PointX="13" PointY="6" />
+        <EntityTypeShape EntityType="DragonFighterModel.StoryTellingImg" Width="1.5" PointX="13" PointY="8.375" />
+        <EntityTypeShape EntityType="DragonFighterModel.StroyMapping" Width="1.5" PointX="15.25" PointY="1.625" />
+        <EntityTypeShape EntityType="DragonFighterModel.Subject" Width="1.5" PointX="8" PointY="8.25" />
+        <EntityTypeShape EntityType="DragonFighterModel.SubjectArea" Width="1.5" PointX="5.75" PointY="9.125" />
+        <EntityTypeShape EntityType="DragonFighterModel.SubjectFile" Width="1.5" PointX="10.25" PointY="8.875" />
+        <EntityTypeShape EntityType="DragonFighterModel.SubjectType" Width="1.5" PointX="5.75" PointY="12.125" />
+        <AssociationConnector Association="DragonFighterModel.FK_MemberRole_ArenaTitle" />
+        <AssociationConnector Association="DragonFighterModel.FK_Member_MemberRole" />
+        <AssociationConnector Association="DragonFighterModel.MemberMemberLog" />
+        <AssociationConnector Association="DragonFighterModel.FK_MemberRole_MemberRoleStatus" />
+        <AssociationConnector Association="DragonFighterModel.FK_MemberRole_RoleAttrsDetail" />
+        <AssociationConnector Association="DragonFighterModel.MemberRoleImgMemberRole" />
+        <AssociationConnector Association="DragonFighterModel.FK_RoleAttrs_RoleAttrsDetail" />
+        <AssociationConnector Association="DragonFighterModel.FK_StoreType_Store" />
+        <AssociationConnector Association="DragonFighterModel.FK_StoryPackage_Store" />
+        <AssociationConnector Association="DragonFighterModel.StoryStoreInfoStroyMapping" />
+        <AssociationConnector Association="DragonFighterModel.StoryTellingStroyMapping" />
+        <AssociationConnector Association="DragonFighterModel.StoryTellingImgStroyMapping" />
+        <AssociationConnector Association="DragonFighterModel.FK_Subject_SubjectArea" />
+        <AssociationConnector Association="DragonFighterModel.FK_Subject_SubjectFIle" />
+        <AssociationConnector Association="DragonFighterModel.FK_Subject_SubjectType" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

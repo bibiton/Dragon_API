@@ -1,0 +1,302 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+openghost
+</name>
+</assembly>
+<members>
+<member name="M:openghost.Utilities.Check_Mobile(System.String)">
+	<summary>
+ 手機號碼驗證函式，參數：Mobile檢查字串‧回傳不等於Y是通過驗證，
+ </summary>
+	<param name="Mobile">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_MobileData(System.String)">
+	<summary>
+ 手機號碼驗證是否為0~9字元函式，參數：Mobile檢查字串‧回傳False是無效手機號碼。
+ </summary>
+	<param name="Mobile">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_MobileLen(System.String)">
+	<summary>
+ 手機號碼驗證是否大於10位數或小於10位數函式，參數：Mobile檢查字串‧回傳False是大於10位數，回傳True小於10位數。
+ </summary>
+	<param name="Mobile">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_0_9(System.String)">
+	<summary>
+ 字串驗證0~9字元函式，參數：Data檢查字串‧回傳False是無效0~9字元。
+ </summary>
+	<param name="Data">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_A_Z(System.String)">
+	<summary>
+ 字串驗證A-Z字元函式，參數：Data檢查字串‧回傳False是無效A-Z字元。
+ </summary>
+	<param name="Data">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_0_Z(System.String)">
+	<summary>
+ 字串驗證0-9~A-Z字元函式，參數：Data檢查字串‧回傳False是無效0-9~A-Z字元。
+ </summary>
+	<param name="Data">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_TW_ID(System.String)">
+	<summary>
+ 台灣身分證驗證函式，參數：strID檢查字串‧正確則傳回0,錯誤則傳回其它非0的錯誤代碼。
+ </summary>
+	<param name="strID">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_CN_ID(System.String)">
+	<summary>
+ 大陸身分證驗證函式，參數：strID檢查字串‧正確則傳回0,錯誤則傳回其它非0的錯誤代碼。
+ </summary>
+	<param name="strID">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_HK_ID(System.String)">
+	<summary>
+ 香港身分證驗證函式，參數：strID檢查字串‧正確則傳回0,錯誤則傳回其它非0的錯誤代碼。
+ </summary>
+	<param name="strID">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_TW_INV(System.String)">
+	<summary>
+ 台灣營利事業統一編號驗證函式，參數：strID檢查字串‧正確則傳回0,錯誤則傳回其它非0的錯誤代碼。
+ </summary>
+	<param name="strID">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_EAN13(System.String)">
+	<summary>
+ 國際標準13碼(期刊、書籍、樂譜)驗證函式，參數：eancode檢查字串‧正確則傳回0,錯誤則傳回其它非0的錯誤代碼。
+ </summary>
+	<param name="eancode">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_EAN8(System.String)">
+	<summary>
+ 國際標準期刊8碼驗證函式，參數：eancode檢查字串‧正確則傳回0,錯誤則傳回其它非0的錯誤代碼。
+ </summary>
+	<param name="eancode">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_Email(System.String)">
+	<summary>
+ 信箱驗證函式，參數：strEmail檢查字串‧正確則傳回0,錯誤則傳回其它非0的錯誤代碼。
+ </summary>
+	<param name="strEmail">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_Host(System.String)">
+	<summary>
+ 網域名稱驗證函式，參數：strHost檢查字串‧正確則傳回0,錯誤則傳回其它非0的錯誤代碼。
+ </summary>
+	<param name="strHost">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_TopLevelDomain(System.String)">
+	<summary>
+ 最高層網域驗證函式，參數：strDomain檢查字串‧正確則傳回0,錯誤則傳回其它非0的錯誤代碼。
+ </summary>
+	<param name="strDomain">檢查字串</param>
+</member><member name="F:openghost.Utilities.TopLevelDomain">
+	<summary>
+ 自訂最高層網域函式。
+ </summary>
+</member><member name="M:openghost.Utilities.Check_Credit(System.String)">
+	<summary>
+ 信用卡驗證函式，參數：strCardno檢查字串，回傳False是無效信用卡，回傳True是有效信用卡。
+ </summary>
+	<param name="strCardno">檢查字串</param>
+</member><member name="M:openghost.Utilities.Check_IP(System.Object,System.Object)">
+	<summary>
+ IP 格式驗證函式，參數：varIP驗證的IP，varNum檢查區段。
+ </summary>
+	<param name="varIP">檢查的IP</param>
+	<param name="varNum">長度</param>
+</member><member name="M:openghost.Utilities.GetClientIP(System.Web.UI.Page)">
+	<summary>
+ 取得客戶端真實IP函式，回傳False是代理IP，回傳True是真實IP。
+ </summary>
+</member><member name="M:openghost.Utilities.Cient_MsgBox(System.String,System.Web.UI.Page,System.String)">
+	<summary>
+ 視窗訊息函式，參數：msg字串訊息。
+ </summary>
+	<param name="msg">字串訊息</param>
+</member><member name="M:openghost.Utilities.Cient_MsgUrl(System.String,System.String,System.Web.UI.Page,System.String)">
+	<summary>
+ 視窗訊息並轉網頁函式，參數：msg字串訊息，Url轉向網頁。
+ </summary>
+	<param name="msg">字串訊息</param>
+	<param name="Url">轉向網頁</param>
+</member><member name="M:openghost.Utilities.JsHistoryAlert(System.String,System.Int32,System.Web.UI.Page,System.String)">
+	<summary>
+ 彈跳視窗訊息並函式，參數：msg字串訊息，PoInt彈跳網頁(-1)上一頁，(1)下一頁。
+ </summary>
+	<param name="msg">字串訊息</param>
+	<param name="PoInt">彈跳網頁</param>
+</member><member name="M:openghost.Utilities.Cient_Script(System.String,System.Web.UI.Page,System.String)">
+	<summary>
+ 自訂JavaScript函式，參數：JavaScript字串。
+ </summary>
+	<param name="JavaScript">字串訊息</param>
+</member><member name="M:openghost.Utilities.Cient_Url(System.Web.UI.WebControls.WebControl,System.String,System.String,System.String,System.String)">
+	<summary>
+ 另開視窗函式，參數：sUrl指定網頁，指定高度height，指定寬度width，指定捲軸scrollbars。
+ </summary>
+	<param name="sUrl">指定網頁</param>
+	<param name="height">指定高度</param>
+	<param name="width">指定寬度</param>
+	<param name="scrollbars">指定捲軸</param>
+</member><member name="M:openghost.Utilities.Reciprocal_Url(System.Int32,System.String,System.Web.UI.Page)">
+	<summary>
+ 時間倒數轉網頁函式，參數：Reciprocal指定秒數，sUrl指定網頁。
+ </summary>
+	<param name="Reciprocal">指定秒數</param>
+	<param name="sUrl">指定轉網頁</param>
+</member><member name="M:openghost.Utilities.Word_Count(System.Web.UI.WebControls.WebControl,System.Web.UI.Page,System.String,System.String)">
+	<summary>
+ 幾算字數函式，參數：Reciprocal指定字數，sUrl指定檔案來源。
+ </summary>
+	<param name="Count">指定字數</param>
+	<param name="sUrl">指定檔案來源</param>
+</member><member name="M:openghost.Utilities.Get_Number(System.Int32,System.Int16)">
+	<summary>
+ 產生亂數函式，參數：vcodenum長度，IntMode樣式，1-"0"、2-"A"、3-"a"、4-"aA"、5-"a0"、6-"A0"、7-"Aa0"。
+ </summary>
+	<param name="vcodenum">長度</param>
+	<param name="IntMode">樣式</param>
+</member><member name="M:openghost.Utilities.Str_ClearText(System.Web.UI.HtmlControls.HtmlForm)">
+	<summary>
+ 清除文字方塊函式，參數：form1指定來源。
+ </summary>
+	<param name="form1">指定來源</param>
+</member><member name="M:openghost.Utilities.Str_Word(System.Object,System.Int32,System.String)">
+	<summary>
+ 限制字數的函式，參數：LongString要被限制的字串，intLimitCount要限制幾個字，exString非必要選項，若傳入新字數樣式，預設為...，繫節時使用，會把NULL值換成空白顯示。
+ </summary>
+	<param name="LongString">要被限制的字串</param>
+	<param name="intLimitCount">要限制幾個字</param>
+	<param name="exString">非必要選項，若傳入可更換超過的字數樣式，預設為...</param>
+	<remarks>繫節時使用，會把NULL值換成空白顯示。</remarks>
+</member><member name="M:openghost.Utilities.Get_GroupRows(System.Web.UI.WebControls.GridView,System.Int32)">
+	<summary> 
+ 合併GridView列中相同的行函式，參數：GridView對象，cellNum需要合併得列。
+ </summary>
+	<param name="GridView1">GridView對象</param>
+	<param name="cellNum">需要合併得列</param>
+</member><member name="M:openghost.Utilities.Get_GroupRows(System.Web.UI.WebControls.GridView,System.Int32,System.Int32)">
+	<summary> 
+ 合併GridView列中相同的行函式，參數：GridView1對象，cellNum需要合併得列，cellNum2條件列合併。
+ </summary>
+	<param name="GridView1">GridView對象</param>
+	<param name="cellNum">需要合併得列</param>
+	<param name="cellNum2">條件列合併</param>
+</member><member name="M:openghost.Utilities.GetTdMergedInfo(NPOI.HSSF.UserModel.HSSFSheet,System.Int32,System.Int32,System.Int32@,System.Int32@,System.Boolean@)">
+	<summary>
+  合併Table某個TD合併的列數和行數等信息。與Excel中對應Cell的合併行數和列數一致。
+ </summary>
+	<param name="sheet">呼叫HSSFSheet</param>
+	<param name="rowIndex">行數</param>
+	<param name="colIndex">列數</param>
+	<param name="colspan">TD中需要合併的行數</param>
+	<param name="rowspan">TD中需要合併的列數</param>
+	<param name="isByRowMerged">此單元格是否被某個行合併包含在内。如果被包含在内，將不輸出TD。</param>
+</member><member name="M:openghost.Utilities.GetConstellation(System.DateTime)">
+	<summary> 
+ 取得西洋星座函式，參數：mDate指定日期。 
+ </summary>
+	<param name="mDate">指定日期</param>
+</member><member name="M:openghost.Utilities.GetDateLunarZodiac(System.DateTime)">
+	<summary> 
+ 取得農曆生肖函式，參數：mDate指定日期。 
+ </summary>
+	<param name="mDate">指定日期</param>
+</member><member name="M:openghost.Encrypy.DESEncrypt(System.String,System.Byte[],System.Byte[])">
+	<summary>
+加密函式，參數：strInput原字串，byteKey第一組金鑰，byteIV第二組金鑰。
+ </summary>
+	<param name="strInput">原字串</param>
+	<param name="byteKey">第一組金鑰，8bytes的Byte()</param>
+	<param name="byteIV">第二組金鑰，8bytes的Byte()</param>
+	<returns>回傳一個加密後的字串</returns>
+</member><member name="M:openghost.Encrypy.DESDecrypt(System.String,System.Byte[],System.Byte[])">
+	<summary>
+ 解密函式，參數：Input加密後的字串，byteKey第一組金鑰，byteIV第二組金鑰。
+ </summary>
+	<param name="Input">加密後的字串</param>
+	<param name="byteKey">第一組金鑰，8bytes的Byte()</param>
+	<param name="byteIV">第二組金鑰，8bytes的Byte()</param>
+	<returns>回傳解密後的字串</returns>
+</member><member name="M:openghost.Files.ZipFile(System.String,System.String)">
+	<summary>
+ 壓縮單一檔案函式，參數：SourceFile要壓縮的資料(完整路徑)，TargetFile要產生的Zip檔案(完整路徑檔名)。
+ </summary>
+	<param name="SourceFile">要壓縮的資料(完整路徑)</param>
+	<param name="TargetFile">要產生的Zip檔案(完整路徑檔名)</param>
+	<remarks>可回傳True壓縮成功</remarks>
+</member><member name="M:openghost.Files.ZipDir(System.String,System.String)">
+	<summary>
+ 壓縮整個目錄函式，參數：SourceDir要壓縮的資料夾(完整路徑)，TargetFile要產生的Zip檔案(完整路徑檔名)。
+ </summary>
+	<param name="SourceDir">要壓縮的資料夾(完整路徑)</param>
+	<param name="TargetFile">要產生的Zip檔案(完整路徑檔名)</param>
+	<remarks>可回傳True壓縮成功</remarks>
+</member><member name="M:openghost.Files.UnZipFile(System.String,System.String)">
+	<summary>
+ 解壓縮函式，參數：SourceFile要解壓的Zip檔案(完整路徑檔名)，TargetDir解壓縮後存放的路徑(完整路徑)。
+ </summary>
+	<param name="SourceFile">要解壓的Zip檔案(完整路徑)</param>
+	<param name="TargetDir">解壓縮後存放的路徑(完整路徑)</param>
+	<remarks>可回傳True解壓成功</remarks>
+</member><member name="M:openghost.Files.AddTextToImg(System.String,System.IO.Stream,System.String)">
+	<summary>
+ 處理圖片版權信息函式，參數：Path輸出圖面路徑，參數：fileName來源圖面，Texts版權信息。
+ </summary>
+	<param name="Path">輸出圖面路徑</param>
+	<param name="fileName">來源圖面</param>
+	<param name="Texts">版權信息</param>
+</member><member name="M:openghost.Files.GenerateThumbnailImage(System.String,System.String,System.Int32,System.Int32,System.String)">
+	<summary>
+ 處理圖片函式，參數：name來源圖面路徑，Path_s輸出圖面路徑，Width指定要縮的寬度，Hight指定要縮的高度，Texts版權文字
+ </summary>
+	<param name="Path">來源圖面路徑</param>
+	<param name="Path_s">輸出圖面路徑</param>
+	<param name="width">指定要縮的寬度</param>
+	<param name="height">指定要縮的高度</param>
+	<param name="Texts">版權文字</param>
+</member><member name="M:openghost.Files.FileDownLoad(System.String,System.String,System.Byte[]@)">
+	<summary>
+ 自動下載函式，參數：ME，FileType下載檔案名稱，FileName下載檔案路徑，Document下載檔案型態。
+ </summary>
+	<param name="FileType">檔案類型，上傳檔案時要抓取檔案類型</param>
+	<param name="FileName">檔案名稱</param>
+	<param name="Document">文件內容(byte array)</param>
+	<remarks></remarks>
+</member><member name="M:openghost.Files.Export(System.Web.UI.WebControls.GridView,System.String,System.Int32)">
+	<summary>
+ 匯出檔案函式，參數：來源GridView，Encoding編碼方式，FileName檔案名稱，Type匯出格式，1-word、2-excel、3-pdf。
+ </summary>
+	<param name="GridView">來源GridView。</param>
+	<param name="FileName">檔案名稱。</param>
+	<param name="Type">匯出格式。</param>
+</member><member name="M:openghost.Files.Get_CodeImage(System.Int32,System.Int32,System.Int32,System.Int32)">
+	<summary>
+ 圖形驗證函式，參數：CodeLength字串長度，Width字體寬度，Height字體高度，FontSize字體大小
+ </summary>
+	<param name="CodeLength">字串長度。</param>
+	<param name="Width">字體寬度。</param>
+	<param name="Height">字體高度。</param>
+	<param name="FontSize">字體大小。</param>
+</member><member name="M:openghost.Files.CopyRow(NPOI.HSSF.UserModel.HSSFSheet@,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+	<summary>
+ 複製一整列
+ </summary>
+</member><member name="M:openghost.Files.ShiftRows(NPOI.HSSF.UserModel.HSSFSheet@,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+	<summary>
+ 客製ShiftRows，以保留原本格式
+ </summary>
+</member><member name="M:openghost.SendMail.Send(System.String,System.String,System.Net.Mail.MailAddressCollection,System.String,System.String,System.String,System.Boolean)">
+	<summary>
+SMTP函式，參數：Sender寄件者，MailTo收件者集合，SmtpServer主機IP，MailSubject主旨，MailBody信件內容，IsHtml是否以HTML格式寄信。
+ </summary>
+	<param name="Sender">寄件者</param>
+	<param name="MailTo">收件者集合</param>
+	<param name="SmtpServer">SMTP主機</param>
+	<param name="MailSubject">主旨</param>
+	<param name="MailBody">信件內容</param>
+	<param name="IsHtml">是否以HTML格式寄信</param>
+</member><member name="M:openghost.SendMail.Gmail_Send(System.String,System.String,System.Net.Mail.MailAddressCollection,System.Boolean,System.Boolean)">
+	<summary>
+Gmail_SMTP函式，參數：Subject信件標題，Content信件內容，Receiver收件者，EnableTHML是否為HTML內容，EnableSSL是否啟用SSL。
+ </summary>
+	<param name="Subject">信件標題</param>
+	<param name="Content">信件內容</param>
+	<param name="Receiver">收件者</param>
+	<param name="EnableTHML">是否為HTML內容</param>
+	<param name="EnableSSL">是否啟用SSL</param>
+</member>
+</members>
+</doc>

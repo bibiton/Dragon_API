@@ -1,0 +1,1416 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TEAMMS_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Admin_ID" />
+    </Key>
+    <Property Name="Admin_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Group_ID" Type="int" Nullable="false" />
+    <Property Name="Sub_School_ID" Type="int" />
+    <Property Name="Sales_ID" Type="int" />
+    <Property Name="Admin_Account" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Admin_PassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Admin_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Admin_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+    <Property Name="Update_User" Type="int" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+    <Property Name="Admin_English" Type="nvarchar" MaxLength="20" />
+    <Property Name="Admin_Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Admin_Phone" Type="nvarchar" MaxLength="30" />
+    <Property Name="Admin_Pic" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="APP_AuthCode">
+    <Key>
+      <PropertyRef Name="AuthCode_ID" />
+    </Key>
+    <Property Name="AuthCode_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AuthCodeMaster_ID" Type="int" Nullable="false" />
+    <Property Name="Student_ID" Type="int" />
+    <Property Name="Code" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="UseMonth" Type="int" Nullable="false" />
+    <Property Name="AuthCode_ValidateTime" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="APP_AuthCodeMaster">
+    <Key>
+      <PropertyRef Name="AuthCodeMaster_ID" />
+    </Key>
+    <Property Name="AuthCodeMaster_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sub_School_ID" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="APP_GoldRecord">
+    <Key>
+      <PropertyRef Name="APP_GoldRecord_ID" />
+    </Key>
+    <Property Name="APP_GoldRecord_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="APP_GoldRecord_Count" Type="int" Nullable="false" />
+    <Property Name="APP_GoldRecord_Reason" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="APP_GoldRecord_Time" Type="smalldatetime" Nullable="false" />
+    <Property Name="Student_ID" Type="int" Nullable="false" />
+    <Property Name="APP_TestRecord_ID" Type="int" />
+    <Property Name="GoldType" Type="bit" Nullable="false" />
+    <Property Name="LearningRecordMaster_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="APP_LearnRecord">
+    <Key>
+      <PropertyRef Name="APP_LearnRecord_ID" />
+    </Key>
+    <Property Name="APP_LearnRecord_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Course_ID" Type="int" Nullable="false" />
+    <Property Name="Student_ID" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="APP_LoginRecord">
+    <Key>
+      <PropertyRef Name="APP_LoginRecord" />
+    </Key>
+    <Property Name="APP_LoginRecord" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Student_ID" Type="int" Nullable="false" />
+    <Property Name="LoginTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="APP_MapRecord">
+    <Key>
+      <PropertyRef Name="APP_MapRecord_ID" />
+    </Key>
+    <Property Name="APP_MapRecord_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Student_ID" Type="int" Nullable="false" />
+    <Property Name="Book_ID" Type="int" Nullable="false" />
+    <Property Name="Lesson_ID" Type="int" Nullable="false" />
+    <Property Name="Unlock_Time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="APP_Monster_Group">
+    <Key>
+      <PropertyRef Name="APP_Monster_Group_ID" />
+    </Key>
+    <Property Name="APP_Monster_Group_ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="APP_Monster_Group_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="APP_Monster_Group_Points" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="APP_Monsters">
+    <Key>
+      <PropertyRef Name="APP_Monsters_ID" />
+    </Key>
+    <Property Name="APP_Monsters_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="APP_Monsters_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="APP_Monsters_Price" Type="int" Nullable="false" />
+    <Property Name="APP_Monster_Group_ID" Type="tinyint" Nullable="false" />
+    <Property Name="Small_Gif" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Big_Gif" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Direction" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="APP_Monsters_Detail">
+    <Key>
+      <PropertyRef Name="APP_Monsters_Detail_ID" />
+    </Key>
+    <Property Name="APP_Monsters_Detail_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="APP_Monsters_ID" Type="int" Nullable="false" />
+    <Property Name="Student_ID" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="APP_ScoreRecord">
+    <Key>
+      <PropertyRef Name="APP_ScoreRecord_ID" />
+    </Key>
+    <Property Name="APP_ScoreRecord_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Student_ID" Type="int" Nullable="false" />
+    <Property Name="MovieSubject_ID" Type="int" Nullable="false" />
+    <Property Name="APP_ScoreRecord_Count" Type="int" Nullable="false" />
+    <Property Name="APP_ScoreRecord_Time" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="APP_TestRecord">
+    <Key>
+      <PropertyRef Name="APP_TestRecord_ID" />
+    </Key>
+    <Property Name="APP_TestRecord_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Student_ID" Type="int" Nullable="false" />
+    <Property Name="Course_ID" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+    <Property Name="IsSpell" Type="bit" Nullable="false" />
+    <Property Name="AverageScore" Type="float" />
+    <Property Name="Re_Test" Type="bit" Nullable="false" />
+    <Property Name="IsSpeakPractice" Type="bit" />
+    <Property Name="IsGetGold" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="APP_TestRecordDetail">
+    <Key>
+      <PropertyRef Name="APP_TestRecordDetail_ID" />
+    </Key>
+    <Property Name="APP_TestRecordDetail_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="APP_TestRecord_ID" Type="int" Nullable="false" />
+    <Property Name="Subject_ID" Type="int" Nullable="false" />
+    <Property Name="Option_ID" Type="bigint" />
+    <Property Name="IsRight" Type="bit" />
+    <Property Name="Student_Answer" Type="nvarchar(max)" />
+    <Property Name="RecorderFile" Type="nvarchar(max)" />
+    <Property Name="RecorderScore" Type="tinyint" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="SpeechScore" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Book_CD">
+    <Key>
+      <PropertyRef Name="Book_CD_ID" />
+    </Key>
+    <Property Name="Book_CD_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Book_No" Type="nvarchar(max)" />
+    <Property Name="Course_Title" Type="nvarchar(max)" />
+    <Property Name="CD_Title" Type="nvarchar(max)" />
+    <Property Name="CD_Name" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="City_ID" />
+    </Key>
+    <Property Name="City_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="City_Name" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Area_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Class_Data">
+    <Key>
+      <PropertyRef Name="Class_ID" />
+    </Key>
+    <Property Name="Class_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Class_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sub_School_ID" Type="int" Nullable="false" />
+    <Property Name="Create_Time" Type="smalldatetime" Nullable="false" />
+    <Property Name="IsEnable" Type="bit" Nullable="false" />
+    <Property Name="SendMailDate" Type="smalldatetime" />
+    <Property Name="DeleteDate" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Course_ID" />
+    </Key>
+    <Property Name="Course_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Parent_ID" Type="int" />
+    <Property Name="BookData_ID" Type="int" Nullable="false" />
+    <Property Name="Course_Level" Type="tinyint" Nullable="false" />
+    <Property Name="Course_Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Course_No" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Course_Image" Type="varchar" MaxLength="80" />
+    <Property Name="Sort" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Course_Scheduling">
+    <Key>
+      <PropertyRef Name="Course_Scheduling_ID" />
+    </Key>
+    <Property Name="Course_Scheduling_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Class_ID" Type="int" />
+    <Property Name="Course_ID" Type="int" Nullable="false" />
+    <Property Name="Course_StartDate" Type="smalldatetime" Nullable="false" />
+    <Property Name="Course_EndDate" Type="smalldatetime" />
+    <Property Name="Admin_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="LearningRecord">
+    <Key>
+      <PropertyRef Name="LearningRecord_ID" />
+    </Key>
+    <Property Name="LearningRecord_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LearningRecordMaster_ID" Type="int" Nullable="false" />
+    <Property Name="Subject_ID" Type="int" Nullable="false" />
+    <Property Name="Option_ID" Type="bigint" />
+    <Property Name="IsRight" Type="bit" Nullable="false" />
+    <Property Name="Option_Name" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="LearningRecordMaster">
+    <Key>
+      <PropertyRef Name="LearningRecordMaster_ID" />
+    </Key>
+    <Property Name="LearningRecordMaster_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Student_ID" Type="int" Nullable="false" />
+    <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+    <Property Name="FromAPP" Type="bit" />
+    <Property Name="Movie_ID" Type="int" />
+    <Property Name="AnswerRate" Type="float" />
+  </EntityType>
+  <EntityType Name="MovieData">
+    <Key>
+      <PropertyRef Name="Movie_ID" />
+    </Key>
+    <Property Name="Movie_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Account_ID" Type="int" Nullable="false" />
+    <Property Name="Subcategory_ID" Type="int" Nullable="false" />
+    <Property Name="Course_ID" Type="int" />
+    <Property Name="Movie_Title" Type="nvarchar" MaxLength="150" />
+    <Property Name="Youtube_ID" Type="nvarchar" MaxLength="150" />
+    <Property Name="Movie_Time" Type="int" />
+    <Property Name="Movie_Size" Type="int" />
+    <Property Name="Movie_Status" Type="tinyint" Nullable="false" />
+    <Property Name="Movie_Description" Type="nvarchar(max)" />
+    <Property Name="Movie_Uploader" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+    <Property Name="Movie_Public" Type="bit" Nullable="false" />
+    <Property Name="ThumbURL" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="MovieSubject">
+    <Key>
+      <PropertyRef Name="Subject_ID" />
+    </Key>
+    <Property Name="Subject_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Movie_ID" Type="int" />
+    <Property Name="IRS_Contnet_ID" Type="int" />
+    <Property Name="SubjectArea_ID" Type="int" />
+    <Property Name="SubjectType_ID" Type="smallint" />
+    <Property Name="Course_ID" Type="int" />
+    <Property Name="Subject_Type" Type="int" Nullable="false" />
+    <Property Name="Subject_Name" Type="nvarchar(max)" />
+    <Property Name="Excel_idx" Type="int" />
+    <Property Name="Article" Type="nvarchar(max)" />
+    <Property Name="Article_Attach" Type="nvarchar(max)" />
+    <Property Name="IsApp" Type="bit" Nullable="false" />
+    <Property Name="Template" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Options">
+    <Key>
+      <PropertyRef Name="Option_ID" />
+    </Key>
+    <Property Name="Option_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject_ID" Type="int" Nullable="false" />
+    <Property Name="Option_Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="150" />
+    <Property Name="IsAnswer" Type="bit" Nullable="false" />
+    <Property Name="Option_Order" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="PhoneRecord">
+    <Key>
+      <PropertyRef Name="PhoneRecord_ID" />
+    </Key>
+    <Property Name="PhoneRecord_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Sub_School_ID" Type="int" />
+    <Property Name="PhoneRecord_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CreateTime" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="SchoolArea">
+    <Key>
+      <PropertyRef Name="SchoolArea_ID" />
+    </Key>
+    <Property Name="SchoolArea_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="City_ID" Type="int" Nullable="false" />
+    <Property Name="SchoolArea_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScoreDetail">
+    <Key>
+      <PropertyRef Name="ScoreDetail_ID" />
+    </Key>
+    <Property Name="ScoreDetail_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScoreTypeManage_ID" Type="int" Nullable="false" />
+    <Property Name="Student_ID" Type="int" Nullable="false" />
+    <Property Name="Course_Scheduling_ID" Type="int" />
+    <Property Name="Course_ID" Type="int" Nullable="false" />
+    <Property Name="StudentScore" Type="float" />
+  </EntityType>
+  <EntityType Name="ScoreTypeManage">
+    <Key>
+      <PropertyRef Name="ScoreTypeManage_ID" />
+    </Key>
+    <Property Name="ScoreTypeManage_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Course_ID" Type="int" Nullable="false" />
+    <Property Name="ScoreType_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student_Data">
+    <Key>
+      <PropertyRef Name="Student_ID" />
+    </Key>
+    <Property Name="Student_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Class_ID" Type="int" />
+    <Property Name="Student_No" Type="int" Nullable="false" />
+    <Property Name="Student_Name" Type="nvarchar" MaxLength="20" />
+    <Property Name="Student_English" Type="nvarchar" MaxLength="20" />
+    <Property Name="Student_Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Student_Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Student_Parent" Type="nvarchar" MaxLength="20" />
+    <Property Name="Parent_Phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="Student_Pic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Student_Account" Type="nvarchar" MaxLength="20" />
+    <Property Name="Student_Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="Is_Quit" Type="bit" Nullable="false" />
+    <Property Name="APP_GoldCount" Type="int" Nullable="false" />
+    <Property Name="APP_ScoreCount" Type="int" Nullable="false" />
+    <Property Name="TM_Monster_ID" Type="int" />
+    <Property Name="ST_Monster_ID" Type="int" />
+    <Property Name="PH_Monster_ID" Type="int" />
+    <Property Name="APP_PureGoldCount" Type="int" Nullable="false" />
+    <Property Name="APP_ValidateTime" Type="smalldatetime" />
+    <Property Name="APP_CurrentBook" Type="int" />
+    <Property Name="APP_MonsterRecord_Count" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudentToken">
+    <Key>
+      <PropertyRef Name="StudentToken_ID" />
+    </Key>
+    <Property Name="StudentToken_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Student_ID" Type="int" />
+    <Property Name="Token" Type="varchar" MaxLength="255" />
+    <Property Name="UpdateTime" Type="smalldatetime" />
+    <Property Name="OS" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Sub_School">
+    <Key>
+      <PropertyRef Name="Sub_School_ID" />
+    </Key>
+    <Property Name="Sub_School_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sub_School_Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Sub_School_No" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Contact_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Contact_Phone" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Contact_Fax" Type="nvarchar" MaxLength="25" />
+    <Property Name="SchoolArea_ID" Type="int" Nullable="false" />
+    <Property Name="Contact_Address" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreateTime" Type="smalldatetime" Nullable="false" />
+    <Property Name="Sub_School_Introduction" Type="nvarchar(max)" />
+    <Property Name="About_Boss" Type="nvarchar(max)" />
+    <Property Name="FAQ" Type="nvarchar(max)" />
+    <Property Name="Student_Limit" Type="int" />
+    <Property Name="SatelliteArea" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="WorkTime" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sub_School_Phone" Type="nvarchar" MaxLength="25" />
+    <Property Name="Sales_ID" Type="int" />
+    <Property Name="Remove_Date" Type="smalldatetime" />
+    <Property Name="EC_ID" Type="int" />
+    <Property Name="UseBook" Type="bit" Nullable="false" />
+    <Property Name="SubSchoolGroup_ID" Type="int" Nullable="false" />
+    <Property Name="isBuyApp" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectArea">
+    <Key>
+      <PropertyRef Name="SubjectArea_ID" />
+    </Key>
+    <Property Name="SubjectArea_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectArea_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectFile">
+    <Key>
+      <PropertyRef Name="SubjectFile_ID" />
+    </Key>
+    <Property Name="SubjectFile_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject_ID" Type="int" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="FileType" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectType">
+    <Key>
+      <PropertyRef Name="SubjectType_ID" />
+    </Key>
+    <Property Name="SubjectType_ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubjectType_Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Subject_Count" Type="smallint" />
+  </EntityType>
+  <EntityType Name="SubSchoolGroup">
+    <Key>
+      <PropertyRef Name="SubSchoolGroup_ID" />
+    </Key>
+    <Property Name="SubSchoolGroup_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubSchoolGroup_Name" Type="nvarchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'TEAMMS_DB.dbo.View_Analyze' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="View_Analyze">
+    <Key>
+      <PropertyRef Name="Student_ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" />
+    <Property Name="Student_ID" Type="int" Nullable="false" />
+    <Property Name="Class_ID" Type="int" />
+    <Property Name="Book_ID" Type="int" />
+    <Property Name="Unit_ID" Type="int" />
+    <Property Name="Lesson_ID" Type="int" />
+    <Property Name="Movie_ID" Type="int" />
+    <Property Name="Movie_Title" Type="nvarchar" MaxLength="150" />
+    <Property Name="SubjectArea_ID" Type="int" />
+    <Property Name="Percentage" Type="float" />
+    <Property Name="Total" Type="int" />
+    <Property Name="isRight" Type="int" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'TEAMMS_DB.dbo.View_AnalyzeForApp' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="View_AnalyzeForApp">
+    <Key>
+      <PropertyRef Name="LearningRecordMaster_ID" />
+      <PropertyRef Name="Student_ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" />
+    <Property Name="LearningRecordMaster_ID" Type="int" Nullable="false" />
+    <Property Name="Student_ID" Type="int" Nullable="false" />
+    <Property Name="Class_ID" Type="int" />
+    <Property Name="Book_ID" Type="int" />
+    <Property Name="Unit_ID" Type="int" />
+    <Property Name="Lesson_ID" Type="int" />
+    <Property Name="Movie_ID" Type="int" />
+    <Property Name="Movie_Title" Type="nvarchar" MaxLength="150" />
+    <Property Name="Percentage" Type="float" />
+    <Property Name="Total" Type="int" />
+    <Property Name="isRight" Type="int" />
+  </EntityType>
+  <Association Name="FK__Admin_cop__Sub_S__0E44098D">
+    <End Role="Sub_School" Type="Self.Sub_School" Multiplicity="0..1" />
+    <End Role="Admin" Type="Self.Admin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sub_School">
+        <PropertyRef Name="Sub_School_ID" />
+      </Principal>
+      <Dependent Role="Admin">
+        <PropertyRef Name="Sub_School_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_APP_TestRecordDetail_APP_TestRecord">
+    <End Role="APP_TestRecord" Type="Self.APP_TestRecord" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="APP_TestRecordDetail" Type="Self.APP_TestRecordDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APP_TestRecord">
+        <PropertyRef Name="APP_TestRecord_ID" />
+      </Principal>
+      <Dependent Role="APP_TestRecordDetail">
+        <PropertyRef Name="APP_TestRecord_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_APP_TestRecordDetail_MovieSubject">
+    <End Role="MovieSubject" Type="Self.MovieSubject" Multiplicity="1" />
+    <End Role="APP_TestRecordDetail" Type="Self.APP_TestRecordDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MovieSubject">
+        <PropertyRef Name="Subject_ID" />
+      </Principal>
+      <Dependent Role="APP_TestRecordDetail">
+        <PropertyRef Name="Subject_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_APPLoginRecord_StudentData">
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="APP_LoginRecord" Type="Self.APP_LoginRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Data">
+        <PropertyRef Name="Student_ID" />
+      </Principal>
+      <Dependent Role="APP_LoginRecord">
+        <PropertyRef Name="Student_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BJ_Monster">
+    <End Role="APP_Monsters" Type="Self.APP_Monsters" Multiplicity="0..1" />
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APP_Monsters">
+        <PropertyRef Name="APP_Monsters_ID" />
+      </Principal>
+      <Dependent Role="Student_Data">
+        <PropertyRef Name="TM_Monster_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Class_Data_Sub_School">
+    <End Role="Sub_School" Type="Self.Sub_School" Multiplicity="1" />
+    <End Role="Class_Data" Type="Self.Class_Data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sub_School">
+        <PropertyRef Name="Sub_School_ID" />
+      </Principal>
+      <Dependent Role="Class_Data">
+        <PropertyRef Name="Sub_School_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Clil_Monster">
+    <End Role="APP_Monsters" Type="Self.APP_Monsters" Multiplicity="0..1" />
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APP_Monsters">
+        <PropertyRef Name="APP_Monsters_ID" />
+      </Principal>
+      <Dependent Role="Student_Data">
+        <PropertyRef Name="ST_Monster_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_APP_LearnRecord">
+    <End Role="Course" Type="Self.Course" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="APP_LearnRecord" Type="Self.APP_LearnRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="APP_LearnRecord">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_APP_TestRecord">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="APP_TestRecord" Type="Self.APP_TestRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="APP_TestRecord">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Course1" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="Course1">
+        <PropertyRef Name="Parent_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_CurrentBook">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="Student_Data">
+        <PropertyRef Name="APP_CurrentBook" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Scheduling_Admin">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <End Role="Course_Scheduling" Type="Self.Course_Scheduling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="Admin_ID" />
+      </Principal>
+      <Dependent Role="Course_Scheduling">
+        <PropertyRef Name="Admin_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Scheduling_Class">
+    <End Role="Class_Data" Type="Self.Class_Data" Multiplicity="0..1" />
+    <End Role="Course_Scheduling" Type="Self.Course_Scheduling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class_Data">
+        <PropertyRef Name="Class_ID" />
+      </Principal>
+      <Dependent Role="Course_Scheduling">
+        <PropertyRef Name="Class_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Scheduling_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Course_Scheduling" Type="Self.Course_Scheduling" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="Course_Scheduling">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GoldRecord_Student">
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="APP_GoldRecord" Type="Self.APP_GoldRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Data">
+        <PropertyRef Name="Student_ID" />
+      </Principal>
+      <Dependent Role="APP_GoldRecord">
+        <PropertyRef Name="Student_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LearningRecord_LearningRecordMaster">
+    <End Role="LearningRecordMaster" Type="Self.LearningRecordMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LearningRecord" Type="Self.LearningRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LearningRecordMaster">
+        <PropertyRef Name="LearningRecordMaster_ID" />
+      </Principal>
+      <Dependent Role="LearningRecord">
+        <PropertyRef Name="LearningRecordMaster_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LearningRecord_MovieSubject">
+    <End Role="MovieSubject" Type="Self.MovieSubject" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LearningRecord" Type="Self.LearningRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MovieSubject">
+        <PropertyRef Name="Subject_ID" />
+      </Principal>
+      <Dependent Role="LearningRecord">
+        <PropertyRef Name="Subject_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LearningRecord_Options">
+    <End Role="Options" Type="Self.Options" Multiplicity="0..1" />
+    <End Role="LearningRecord" Type="Self.LearningRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Options">
+        <PropertyRef Name="Option_ID" />
+      </Principal>
+      <Dependent Role="LearningRecord">
+        <PropertyRef Name="Option_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LearningRecordMaster">
+    <End Role="LearningRecordMaster" Type="Self.LearningRecordMaster" Multiplicity="0..1" />
+    <End Role="APP_GoldRecord" Type="Self.APP_GoldRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LearningRecordMaster">
+        <PropertyRef Name="LearningRecordMaster_ID" />
+      </Principal>
+      <Dependent Role="APP_GoldRecord">
+        <PropertyRef Name="LearningRecordMaster_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LearningRecordMaster_Student_Data">
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LearningRecordMaster" Type="Self.LearningRecordMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Data">
+        <PropertyRef Name="Student_ID" />
+      </Principal>
+      <Dependent Role="LearningRecordMaster">
+        <PropertyRef Name="Student_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MapRecord_Course_Book">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="APP_MapRecord" Type="Self.APP_MapRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="APP_MapRecord">
+        <PropertyRef Name="Book_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MapRecord_Course_Lesson">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="APP_MapRecord" Type="Self.APP_MapRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="APP_MapRecord">
+        <PropertyRef Name="Lesson_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MapRecord_StudentData">
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="APP_MapRecord" Type="Self.APP_MapRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Data">
+        <PropertyRef Name="Student_ID" />
+      </Principal>
+      <Dependent Role="APP_MapRecord">
+        <PropertyRef Name="Student_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Master_AuthCode">
+    <End Role="APP_AuthCodeMaster" Type="Self.APP_AuthCodeMaster" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="APP_AuthCode" Type="Self.APP_AuthCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APP_AuthCodeMaster">
+        <PropertyRef Name="AuthCodeMaster_ID" />
+      </Principal>
+      <Dependent Role="APP_AuthCode">
+        <PropertyRef Name="AuthCodeMaster_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Monster_Detail">
+    <End Role="APP_Monsters" Type="Self.APP_Monsters" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="APP_Monsters_Detail" Type="Self.APP_Monsters_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APP_Monsters">
+        <PropertyRef Name="APP_Monsters_ID" />
+      </Principal>
+      <Dependent Role="APP_Monsters_Detail">
+        <PropertyRef Name="APP_Monsters_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Monster_Group">
+    <End Role="APP_Monster_Group" Type="Self.APP_Monster_Group" Multiplicity="1" />
+    <End Role="APP_Monsters" Type="Self.APP_Monsters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APP_Monster_Group">
+        <PropertyRef Name="APP_Monster_Group_ID" />
+      </Principal>
+      <Dependent Role="APP_Monsters">
+        <PropertyRef Name="APP_Monster_Group_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Monster_Student">
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="APP_Monsters_Detail" Type="Self.APP_Monsters_Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Data">
+        <PropertyRef Name="Student_ID" />
+      </Principal>
+      <Dependent Role="APP_Monsters_Detail">
+        <PropertyRef Name="Student_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovieData_Course1">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="MovieData" Type="Self.MovieData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="MovieData">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovieSubject_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="MovieSubject" Type="Self.MovieSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="MovieSubject">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovieSubject_MovieData">
+    <End Role="MovieData" Type="Self.MovieData" Multiplicity="0..1" />
+    <End Role="MovieSubject" Type="Self.MovieSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MovieData">
+        <PropertyRef Name="Movie_ID" />
+      </Principal>
+      <Dependent Role="MovieSubject">
+        <PropertyRef Name="Movie_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovieSubject_SubjectArea">
+    <End Role="SubjectArea" Type="Self.SubjectArea" Multiplicity="0..1" />
+    <End Role="MovieSubject" Type="Self.MovieSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectArea">
+        <PropertyRef Name="SubjectArea_ID" />
+      </Principal>
+      <Dependent Role="MovieSubject">
+        <PropertyRef Name="SubjectArea_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MovieSubject_SubjectType">
+    <End Role="SubjectType" Type="Self.SubjectType" Multiplicity="0..1" />
+    <End Role="MovieSubject" Type="Self.MovieSubject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubjectType">
+        <PropertyRef Name="SubjectType_ID" />
+      </Principal>
+      <Dependent Role="MovieSubject">
+        <PropertyRef Name="SubjectType_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Options_MovieSubject">
+    <End Role="MovieSubject" Type="Self.MovieSubject" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Options" Type="Self.Options" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MovieSubject">
+        <PropertyRef Name="Subject_ID" />
+      </Principal>
+      <Dependent Role="Options">
+        <PropertyRef Name="Subject_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Options_TestDetail">
+    <End Role="Options" Type="Self.Options" Multiplicity="0..1" />
+    <End Role="APP_TestRecordDetail" Type="Self.APP_TestRecordDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Options">
+        <PropertyRef Name="Option_ID" />
+      </Principal>
+      <Dependent Role="APP_TestRecordDetail">
+        <PropertyRef Name="Option_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PM_Monster">
+    <End Role="APP_Monsters" Type="Self.APP_Monsters" Multiplicity="0..1" />
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APP_Monsters">
+        <PropertyRef Name="APP_Monsters_ID" />
+      </Principal>
+      <Dependent Role="Student_Data">
+        <PropertyRef Name="PH_Monster_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_School_AuthCodeMaster">
+    <End Role="Sub_School" Type="Self.Sub_School" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="APP_AuthCodeMaster" Type="Self.APP_AuthCodeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sub_School">
+        <PropertyRef Name="Sub_School_ID" />
+      </Principal>
+      <Dependent Role="APP_AuthCodeMaster">
+        <PropertyRef Name="Sub_School_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SchoolArea_City">
+    <End Role="City" Type="Self.City" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SchoolArea" Type="Self.SchoolArea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="City_ID" />
+      </Principal>
+      <Dependent Role="SchoolArea">
+        <PropertyRef Name="City_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScoreDetail_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="ScoreDetail" Type="Self.ScoreDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="ScoreDetail">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScoreDetail_Course_Scheduling">
+    <End Role="Course_Scheduling" Type="Self.Course_Scheduling" Multiplicity="0..1" />
+    <End Role="ScoreDetail" Type="Self.ScoreDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course_Scheduling">
+        <PropertyRef Name="Course_Scheduling_ID" />
+      </Principal>
+      <Dependent Role="ScoreDetail">
+        <PropertyRef Name="Course_Scheduling_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScoreDetail_ScoreTypeManage">
+    <End Role="ScoreTypeManage" Type="Self.ScoreTypeManage" Multiplicity="1" />
+    <End Role="ScoreDetail" Type="Self.ScoreDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ScoreTypeManage">
+        <PropertyRef Name="ScoreTypeManage_ID" />
+      </Principal>
+      <Dependent Role="ScoreDetail">
+        <PropertyRef Name="ScoreTypeManage_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScoreDetail_Student_Data">
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="1" />
+    <End Role="ScoreDetail" Type="Self.ScoreDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Data">
+        <PropertyRef Name="Student_ID" />
+      </Principal>
+      <Dependent Role="ScoreDetail">
+        <PropertyRef Name="Student_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScoreRecord_MovieSubject">
+    <End Role="MovieSubject" Type="Self.MovieSubject" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="APP_ScoreRecord" Type="Self.APP_ScoreRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MovieSubject">
+        <PropertyRef Name="Subject_ID" />
+      </Principal>
+      <Dependent Role="APP_ScoreRecord">
+        <PropertyRef Name="MovieSubject_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScoreRecord_Student">
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="APP_ScoreRecord" Type="Self.APP_ScoreRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Data">
+        <PropertyRef Name="Student_ID" />
+      </Principal>
+      <Dependent Role="APP_ScoreRecord">
+        <PropertyRef Name="Student_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScoreTypeManage_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="ScoreTypeManage" Type="Self.ScoreTypeManage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Course_ID" />
+      </Principal>
+      <Dependent Role="ScoreTypeManage">
+        <PropertyRef Name="Course_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_APP_LearnRecord">
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="APP_LearnRecord" Type="Self.APP_LearnRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Data">
+        <PropertyRef Name="Student_ID" />
+      </Principal>
+      <Dependent Role="APP_LearnRecord">
+        <PropertyRef Name="Student_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_AuthCode">
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="0..1" />
+    <End Role="APP_AuthCode" Type="Self.APP_AuthCode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Data">
+        <PropertyRef Name="Student_ID" />
+      </Principal>
+      <Dependent Role="APP_AuthCode">
+        <PropertyRef Name="Student_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Data_Class_Data">
+    <End Role="Class_Data" Type="Self.Class_Data" Multiplicity="0..1" />
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Class_Data">
+        <PropertyRef Name="Class_ID" />
+      </Principal>
+      <Dependent Role="Student_Data">
+        <PropertyRef Name="Class_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Student_Token">
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="StudentToken" Type="Self.StudentToken" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Data">
+        <PropertyRef Name="Student_ID" />
+      </Principal>
+      <Dependent Role="StudentToken">
+        <PropertyRef Name="Student_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentData_APP_TestRecord">
+    <End Role="Student_Data" Type="Self.Student_Data" Multiplicity="1" />
+    <End Role="APP_TestRecord" Type="Self.APP_TestRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student_Data">
+        <PropertyRef Name="Student_ID" />
+      </Principal>
+      <Dependent Role="APP_TestRecord">
+        <PropertyRef Name="Student_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sub_School_SchoolArea">
+    <End Role="SchoolArea" Type="Self.SchoolArea" Multiplicity="1" />
+    <End Role="Sub_School" Type="Self.Sub_School" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SchoolArea">
+        <PropertyRef Name="SchoolArea_ID" />
+      </Principal>
+      <Dependent Role="Sub_School">
+        <PropertyRef Name="SchoolArea_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubjectFile_MovieSubject">
+    <End Role="MovieSubject" Type="Self.MovieSubject" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SubjectFile" Type="Self.SubjectFile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MovieSubject">
+        <PropertyRef Name="Subject_ID" />
+      </Principal>
+      <Dependent Role="SubjectFile">
+        <PropertyRef Name="Subject_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubSchoolGroup">
+    <End Role="SubSchoolGroup" Type="Self.SubSchoolGroup" Multiplicity="1" />
+    <End Role="Sub_School" Type="Self.Sub_School" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubSchoolGroup">
+        <PropertyRef Name="SubSchoolGroup_ID" />
+      </Principal>
+      <Dependent Role="Sub_School">
+        <PropertyRef Name="SubSchoolGroup_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestRecord_Gold">
+    <End Role="APP_TestRecord" Type="Self.APP_TestRecord" Multiplicity="0..1" />
+    <End Role="APP_GoldRecord" Type="Self.APP_GoldRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APP_TestRecord">
+        <PropertyRef Name="APP_TestRecord_ID" />
+      </Principal>
+      <Dependent Role="APP_GoldRecord">
+        <PropertyRef Name="APP_TestRecord_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_GetRandomExamByMovieID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Movie_ID" Type="int" Mode="In" />
+    <Parameter Name="Student_ID" Type="int" Mode="In" />
+    <Parameter Name="Type" Type="char" Mode="In" />
+  </Function>
+  <Function Name="SP_GetStudentRanking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Type" Type="char" Mode="In" />
+    <Parameter Name="Type_ID" Type="int" Mode="In" />
+    <Parameter Name="Student_ID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_GetStudentRankingByParam" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Type" Type="char" Mode="In" />
+    <Parameter Name="Type_ID" Type="int" Mode="In" />
+    <Parameter Name="SubSchoolGroup_ID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="TEAMMS_DBModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APP_AuthCode" EntityType="Self.APP_AuthCode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APP_AuthCodeMaster" EntityType="Self.APP_AuthCodeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APP_GoldRecord" EntityType="Self.APP_GoldRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APP_LearnRecord" EntityType="Self.APP_LearnRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APP_LoginRecord" EntityType="Self.APP_LoginRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APP_MapRecord" EntityType="Self.APP_MapRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APP_Monster_Group" EntityType="Self.APP_Monster_Group" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APP_Monsters" EntityType="Self.APP_Monsters" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APP_Monsters_Detail" EntityType="Self.APP_Monsters_Detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APP_ScoreRecord" EntityType="Self.APP_ScoreRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APP_TestRecord" EntityType="Self.APP_TestRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="APP_TestRecordDetail" EntityType="Self.APP_TestRecordDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Book_CD" EntityType="Self.Book_CD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Class_Data" EntityType="Self.Class_Data" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Course_Scheduling" EntityType="Self.Course_Scheduling" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LearningRecord" EntityType="Self.LearningRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LearningRecordMaster" EntityType="Self.LearningRecordMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MovieData" EntityType="Self.MovieData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MovieSubject" EntityType="Self.MovieSubject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Options" EntityType="Self.Options" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhoneRecord" EntityType="Self.PhoneRecord" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchoolArea" EntityType="Self.SchoolArea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScoreDetail" EntityType="Self.ScoreDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScoreTypeManage" EntityType="Self.ScoreTypeManage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student_Data" EntityType="Self.Student_Data" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentToken" EntityType="Self.StudentToken" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sub_School" EntityType="Self.Sub_School" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubjectArea" EntityType="Self.SubjectArea" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubjectFile" EntityType="Self.SubjectFile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubjectType" EntityType="Self.SubjectType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubSchoolGroup" EntityType="Self.SubSchoolGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="View_Analyze" EntityType="Self.View_Analyze" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_Analyze].[ID] AS [ID], 
+    [View_Analyze].[Student_ID] AS [Student_ID], 
+    [View_Analyze].[Class_ID] AS [Class_ID], 
+    [View_Analyze].[Book_ID] AS [Book_ID], 
+    [View_Analyze].[Unit_ID] AS [Unit_ID], 
+    [View_Analyze].[Lesson_ID] AS [Lesson_ID], 
+    [View_Analyze].[Movie_ID] AS [Movie_ID], 
+    [View_Analyze].[Movie_Title] AS [Movie_Title], 
+    [View_Analyze].[SubjectArea_ID] AS [SubjectArea_ID], 
+    [View_Analyze].[Percentage] AS [Percentage], 
+    [View_Analyze].[Total] AS [Total], 
+    [View_Analyze].[isRight] AS [isRight]
+    FROM [dbo].[View_Analyze] AS [View_Analyze]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_AnalyzeForApp" EntityType="Self.View_AnalyzeForApp" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_AnalyzeForApp].[ID] AS [ID], 
+    [View_AnalyzeForApp].[LearningRecordMaster_ID] AS [LearningRecordMaster_ID], 
+    [View_AnalyzeForApp].[Student_ID] AS [Student_ID], 
+    [View_AnalyzeForApp].[Class_ID] AS [Class_ID], 
+    [View_AnalyzeForApp].[Book_ID] AS [Book_ID], 
+    [View_AnalyzeForApp].[Unit_ID] AS [Unit_ID], 
+    [View_AnalyzeForApp].[Lesson_ID] AS [Lesson_ID], 
+    [View_AnalyzeForApp].[Movie_ID] AS [Movie_ID], 
+    [View_AnalyzeForApp].[Movie_Title] AS [Movie_Title], 
+    [View_AnalyzeForApp].[Percentage] AS [Percentage], 
+    [View_AnalyzeForApp].[Total] AS [Total], 
+    [View_AnalyzeForApp].[isRight] AS [isRight]
+    FROM [dbo].[View_AnalyzeForApp] AS [View_AnalyzeForApp]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Admin_cop__Sub_S__0E44098D" Association="Self.FK__Admin_cop__Sub_S__0E44098D">
+      <End Role="Sub_School" EntitySet="Sub_School" />
+      <End Role="Admin" EntitySet="Admin" />
+    </AssociationSet>
+    <AssociationSet Name="FK_APP_TestRecordDetail_APP_TestRecord" Association="Self.FK_APP_TestRecordDetail_APP_TestRecord">
+      <End Role="APP_TestRecord" EntitySet="APP_TestRecord" />
+      <End Role="APP_TestRecordDetail" EntitySet="APP_TestRecordDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_APP_TestRecordDetail_MovieSubject" Association="Self.FK_APP_TestRecordDetail_MovieSubject">
+      <End Role="MovieSubject" EntitySet="MovieSubject" />
+      <End Role="APP_TestRecordDetail" EntitySet="APP_TestRecordDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_APPLoginRecord_StudentData" Association="Self.FK_APPLoginRecord_StudentData">
+      <End Role="Student_Data" EntitySet="Student_Data" />
+      <End Role="APP_LoginRecord" EntitySet="APP_LoginRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BJ_Monster" Association="Self.FK_BJ_Monster">
+      <End Role="APP_Monsters" EntitySet="APP_Monsters" />
+      <End Role="Student_Data" EntitySet="Student_Data" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Class_Data_Sub_School" Association="Self.FK_Class_Data_Sub_School">
+      <End Role="Sub_School" EntitySet="Sub_School" />
+      <End Role="Class_Data" EntitySet="Class_Data" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Clil_Monster" Association="Self.FK_Clil_Monster">
+      <End Role="APP_Monsters" EntitySet="APP_Monsters" />
+      <End Role="Student_Data" EntitySet="Student_Data" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_APP_LearnRecord" Association="Self.FK_Course_APP_LearnRecord">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="APP_LearnRecord" EntitySet="APP_LearnRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_APP_TestRecord" Association="Self.FK_Course_APP_TestRecord">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="APP_TestRecord" EntitySet="APP_TestRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Course" Association="Self.FK_Course_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Course1" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_CurrentBook" Association="Self.FK_Course_CurrentBook">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Student_Data" EntitySet="Student_Data" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Scheduling_Admin" Association="Self.FK_Course_Scheduling_Admin">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="Course_Scheduling" EntitySet="Course_Scheduling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Scheduling_Class" Association="Self.FK_Course_Scheduling_Class">
+      <End Role="Class_Data" EntitySet="Class_Data" />
+      <End Role="Course_Scheduling" EntitySet="Course_Scheduling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Scheduling_Course" Association="Self.FK_Course_Scheduling_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Course_Scheduling" EntitySet="Course_Scheduling" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GoldRecord_Student" Association="Self.FK_GoldRecord_Student">
+      <End Role="Student_Data" EntitySet="Student_Data" />
+      <End Role="APP_GoldRecord" EntitySet="APP_GoldRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LearningRecord_LearningRecordMaster" Association="Self.FK_LearningRecord_LearningRecordMaster">
+      <End Role="LearningRecordMaster" EntitySet="LearningRecordMaster" />
+      <End Role="LearningRecord" EntitySet="LearningRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LearningRecord_MovieSubject" Association="Self.FK_LearningRecord_MovieSubject">
+      <End Role="MovieSubject" EntitySet="MovieSubject" />
+      <End Role="LearningRecord" EntitySet="LearningRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LearningRecord_Options" Association="Self.FK_LearningRecord_Options">
+      <End Role="Options" EntitySet="Options" />
+      <End Role="LearningRecord" EntitySet="LearningRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LearningRecordMaster" Association="Self.FK_LearningRecordMaster">
+      <End Role="LearningRecordMaster" EntitySet="LearningRecordMaster" />
+      <End Role="APP_GoldRecord" EntitySet="APP_GoldRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LearningRecordMaster_Student_Data" Association="Self.FK_LearningRecordMaster_Student_Data">
+      <End Role="Student_Data" EntitySet="Student_Data" />
+      <End Role="LearningRecordMaster" EntitySet="LearningRecordMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MapRecord_Course_Book" Association="Self.FK_MapRecord_Course_Book">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="APP_MapRecord" EntitySet="APP_MapRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MapRecord_Course_Lesson" Association="Self.FK_MapRecord_Course_Lesson">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="APP_MapRecord" EntitySet="APP_MapRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MapRecord_StudentData" Association="Self.FK_MapRecord_StudentData">
+      <End Role="Student_Data" EntitySet="Student_Data" />
+      <End Role="APP_MapRecord" EntitySet="APP_MapRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Master_AuthCode" Association="Self.FK_Master_AuthCode">
+      <End Role="APP_AuthCodeMaster" EntitySet="APP_AuthCodeMaster" />
+      <End Role="APP_AuthCode" EntitySet="APP_AuthCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Monster_Detail" Association="Self.FK_Monster_Detail">
+      <End Role="APP_Monsters" EntitySet="APP_Monsters" />
+      <End Role="APP_Monsters_Detail" EntitySet="APP_Monsters_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Monster_Group" Association="Self.FK_Monster_Group">
+      <End Role="APP_Monster_Group" EntitySet="APP_Monster_Group" />
+      <End Role="APP_Monsters" EntitySet="APP_Monsters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Monster_Student" Association="Self.FK_Monster_Student">
+      <End Role="Student_Data" EntitySet="Student_Data" />
+      <End Role="APP_Monsters_Detail" EntitySet="APP_Monsters_Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovieData_Course1" Association="Self.FK_MovieData_Course1">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="MovieData" EntitySet="MovieData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovieSubject_Course" Association="Self.FK_MovieSubject_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="MovieSubject" EntitySet="MovieSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovieSubject_MovieData" Association="Self.FK_MovieSubject_MovieData">
+      <End Role="MovieData" EntitySet="MovieData" />
+      <End Role="MovieSubject" EntitySet="MovieSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovieSubject_SubjectArea" Association="Self.FK_MovieSubject_SubjectArea">
+      <End Role="SubjectArea" EntitySet="SubjectArea" />
+      <End Role="MovieSubject" EntitySet="MovieSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MovieSubject_SubjectType" Association="Self.FK_MovieSubject_SubjectType">
+      <End Role="SubjectType" EntitySet="SubjectType" />
+      <End Role="MovieSubject" EntitySet="MovieSubject" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Options_MovieSubject" Association="Self.FK_Options_MovieSubject">
+      <End Role="MovieSubject" EntitySet="MovieSubject" />
+      <End Role="Options" EntitySet="Options" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Options_TestDetail" Association="Self.FK_Options_TestDetail">
+      <End Role="Options" EntitySet="Options" />
+      <End Role="APP_TestRecordDetail" EntitySet="APP_TestRecordDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PM_Monster" Association="Self.FK_PM_Monster">
+      <End Role="APP_Monsters" EntitySet="APP_Monsters" />
+      <End Role="Student_Data" EntitySet="Student_Data" />
+    </AssociationSet>
+    <AssociationSet Name="FK_School_AuthCodeMaster" Association="Self.FK_School_AuthCodeMaster">
+      <End Role="Sub_School" EntitySet="Sub_School" />
+      <End Role="APP_AuthCodeMaster" EntitySet="APP_AuthCodeMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SchoolArea_City" Association="Self.FK_SchoolArea_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="SchoolArea" EntitySet="SchoolArea" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScoreDetail_Course" Association="Self.FK_ScoreDetail_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="ScoreDetail" EntitySet="ScoreDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScoreDetail_Course_Scheduling" Association="Self.FK_ScoreDetail_Course_Scheduling">
+      <End Role="Course_Scheduling" EntitySet="Course_Scheduling" />
+      <End Role="ScoreDetail" EntitySet="ScoreDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScoreDetail_ScoreTypeManage" Association="Self.FK_ScoreDetail_ScoreTypeManage">
+      <End Role="ScoreTypeManage" EntitySet="ScoreTypeManage" />
+      <End Role="ScoreDetail" EntitySet="ScoreDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScoreDetail_Student_Data" Association="Self.FK_ScoreDetail_Student_Data">
+      <End Role="Student_Data" EntitySet="Student_Data" />
+      <End Role="ScoreDetail" EntitySet="ScoreDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScoreRecord_MovieSubject" Association="Self.FK_ScoreRecord_MovieSubject">
+      <End Role="MovieSubject" EntitySet="MovieSubject" />
+      <End Role="APP_ScoreRecord" EntitySet="APP_ScoreRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScoreRecord_Student" Association="Self.FK_ScoreRecord_Student">
+      <End Role="Student_Data" EntitySet="Student_Data" />
+      <End Role="APP_ScoreRecord" EntitySet="APP_ScoreRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScoreTypeManage_Course" Association="Self.FK_ScoreTypeManage_Course">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="ScoreTypeManage" EntitySet="ScoreTypeManage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_APP_LearnRecord" Association="Self.FK_Student_APP_LearnRecord">
+      <End Role="Student_Data" EntitySet="Student_Data" />
+      <End Role="APP_LearnRecord" EntitySet="APP_LearnRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_AuthCode" Association="Self.FK_Student_AuthCode">
+      <End Role="Student_Data" EntitySet="Student_Data" />
+      <End Role="APP_AuthCode" EntitySet="APP_AuthCode" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Data_Class_Data" Association="Self.FK_Student_Data_Class_Data">
+      <End Role="Class_Data" EntitySet="Class_Data" />
+      <End Role="Student_Data" EntitySet="Student_Data" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Student_Token" Association="Self.FK_Student_Token">
+      <End Role="Student_Data" EntitySet="Student_Data" />
+      <End Role="StudentToken" EntitySet="StudentToken" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentData_APP_TestRecord" Association="Self.FK_StudentData_APP_TestRecord">
+      <End Role="Student_Data" EntitySet="Student_Data" />
+      <End Role="APP_TestRecord" EntitySet="APP_TestRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sub_School_SchoolArea" Association="Self.FK_Sub_School_SchoolArea">
+      <End Role="SchoolArea" EntitySet="SchoolArea" />
+      <End Role="Sub_School" EntitySet="Sub_School" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubjectFile_MovieSubject" Association="Self.FK_SubjectFile_MovieSubject">
+      <End Role="MovieSubject" EntitySet="MovieSubject" />
+      <End Role="SubjectFile" EntitySet="SubjectFile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubSchoolGroup" Association="Self.FK_SubSchoolGroup">
+      <End Role="SubSchoolGroup" EntitySet="SubSchoolGroup" />
+      <End Role="Sub_School" EntitySet="Sub_School" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestRecord_Gold" Association="Self.FK_TestRecord_Gold">
+      <End Role="APP_TestRecord" EntitySet="APP_TestRecord" />
+      <End Role="APP_GoldRecord" EntitySet="APP_GoldRecord" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

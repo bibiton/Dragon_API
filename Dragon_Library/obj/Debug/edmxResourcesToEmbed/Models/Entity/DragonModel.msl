@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DragonFighterModelStoreContainer" CdmEntityContainer="DragonFighterEntities1">
+    <EntitySetMapping Name="ArenaTitle">
+      <EntityTypeMapping TypeName="DragonFighterModel.ArenaTitle">
+        <MappingFragment StoreEntitySet="ArenaTitle">
+          <ScalarProperty Name="GetPoints" ColumnName="GetPoints" />
+          <ScalarProperty Name="WinCount" ColumnName="WinCount" />
+          <ScalarProperty Name="ArenaTitle_Name" ColumnName="ArenaTitle_Name" />
+          <ScalarProperty Name="ArenaTitle_ID" ColumnName="ArenaTitle_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Member">
+      <EntityTypeMapping TypeName="DragonFighterModel.Member">
+        <MappingFragment StoreEntitySet="Member">
+          <ScalarProperty Name="IToken" ColumnName="IToken" />
+          <ScalarProperty Name="Student_Source" ColumnName="Student_Source" />
+          <ScalarProperty Name="Course_ID" ColumnName="Course_ID" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Member_Password" ColumnName="Member_Password" />
+          <ScalarProperty Name="Member_Account" ColumnName="Member_Account" />
+          <ScalarProperty Name="Student_ID" ColumnName="Student_ID" />
+          <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberLog">
+      <EntityTypeMapping TypeName="DragonFighterModel.MemberLog">
+        <MappingFragment StoreEntitySet="MemberLog">
+          <ScalarProperty Name="ActionTime" ColumnName="ActionTime" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberRole">
+      <EntityTypeMapping TypeName="DragonFighterModel.MemberRole">
+        <MappingFragment StoreEntitySet="MemberRole">
+          <ScalarProperty Name="Int" ColumnName="Int" />
+          <ScalarProperty Name="Spd" ColumnName="Spd" />
+          <ScalarProperty Name="Vit" ColumnName="Vit" />
+          <ScalarProperty Name="Str" ColumnName="Str" />
+          <ScalarProperty Name="Con" ColumnName="Con" />
+          <ScalarProperty Name="MemberRoleImg_ID" ColumnName="MemberRoleImg_ID" />
+          <ScalarProperty Name="Member_ID" ColumnName="Member_ID" />
+          <ScalarProperty Name="ArenaTitle_ID" ColumnName="ArenaTitle_ID" />
+          <ScalarProperty Name="MemberRole_ArenaPoints" ColumnName="MemberRole_ArenaPoints" />
+          <ScalarProperty Name="MemberRole_Exp" ColumnName="MemberRole_Exp" />
+          <ScalarProperty Name="MemberRole_Golds" ColumnName="MemberRole_Golds" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="MemberRole_Gender" ColumnName="MemberRole_Gender" />
+          <ScalarProperty Name="MemberRole_Name" ColumnName="MemberRole_Name" />
+          <ScalarProperty Name="MemberRole_ID" ColumnName="MemberRole_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberRoleAttrs">
+      <EntityTypeMapping TypeName="DragonFighterModel.MemberRoleAttrs">
+        <MappingFragment StoreEntitySet="MemberRoleAttrs">
+          <ScalarProperty Name="MemberRoleAttrs_Times" ColumnName="MemberRoleAttrs_Times" />
+          <ScalarProperty Name="MemberRoleAttrs_Short" ColumnName="MemberRoleAttrs_Short" />
+          <ScalarProperty Name="MemberRoleAttrs_Name" ColumnName="MemberRoleAttrs_Name" />
+          <ScalarProperty Name="MemberRoleAttrs_ID" ColumnName="MemberRoleAttrs_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberRoleImg">
+      <EntityTypeMapping TypeName="DragonFighterModel.MemberRoleImg">
+        <MappingFragment StoreEntitySet="MemberRoleImg">
+          <ScalarProperty Name="MemberRoleImg_URL" ColumnName="MemberRoleImg_URL" />
+          <ScalarProperty Name="MemberRoleImg_ID" ColumnName="MemberRoleImg_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberRoleStatus">
+      <EntityTypeMapping TypeName="DragonFighterModel.MemberRoleStatus">
+        <MappingFragment StoreEntitySet="MemberRoleStatus">
+          <ScalarProperty Name="Res" ColumnName="Res" />
+          <ScalarProperty Name="Spi" ColumnName="Spi" />
+          <ScalarProperty Name="Agi" ColumnName="Agi" />
+          <ScalarProperty Name="Def" ColumnName="Def" />
+          <ScalarProperty Name="Atk" ColumnName="Atk" />
+          <ScalarProperty Name="MP" ColumnName="MP" />
+          <ScalarProperty Name="HP" ColumnName="HP" />
+          <ScalarProperty Name="MemberRole_ID" ColumnName="MemberRole_ID" />
+          <ScalarProperty Name="MemberRoleStatus_ID" ColumnName="MemberRoleStatus_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleAttrsDetail">
+      <EntityTypeMapping TypeName="DragonFighterModel.RoleAttrsDetail">
+        <MappingFragment StoreEntitySet="RoleAttrsDetail">
+          <ScalarProperty Name="AttrsValue" ColumnName="AttrsValue" />
+          <ScalarProperty Name="MemberRoleAttrs_ID" ColumnName="MemberRoleAttrs_ID" />
+          <ScalarProperty Name="MemberRole_ID" ColumnName="MemberRole_ID" />
+          <ScalarProperty Name="RoleAttrsDetail_ID" ColumnName="RoleAttrsDetail_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoreType">
+      <EntityTypeMapping TypeName="DragonFighterModel.StoreType">
+        <MappingFragment StoreEntitySet="StoreType">
+          <ScalarProperty Name="StoreType_Name" ColumnName="StoreType_Name" />
+          <ScalarProperty Name="StoreType_ID" ColumnName="StoreType_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoryPackage">
+      <EntityTypeMapping TypeName="DragonFighterModel.StoryPackage">
+        <MappingFragment StoreEntitySet="StoryPackage">
+          <ScalarProperty Name="MainMap_Size" ColumnName="MainMap_Size" />
+          <ScalarProperty Name="MainMap" ColumnName="MainMap" />
+          <ScalarProperty Name="StoryPackage_Name" ColumnName="StoryPackage_Name" />
+          <ScalarProperty Name="StoryPackage_ID" ColumnName="StoryPackage_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoryStoreInfo">
+      <EntityTypeMapping TypeName="DragonFighterModel.StoryStoreInfo">
+        <MappingFragment StoreEntitySet="StoryStoreInfo">
+          <ScalarProperty Name="StoreBossImage" ColumnName="StoreBossImage" />
+          <ScalarProperty Name="StoreBackImage" ColumnName="StoreBackImage" />
+          <ScalarProperty Name="StoreImage_Posotion" ColumnName="StoreImage_Posotion" />
+          <ScalarProperty Name="StoreImage_Size" ColumnName="StoreImage_Size" />
+          <ScalarProperty Name="StoreImageShine" ColumnName="StoreImageShine" />
+          <ScalarProperty Name="StoreImage" ColumnName="StoreImage" />
+          <ScalarProperty Name="StoreType_ID" ColumnName="StoreType_ID" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store_Name" />
+          <ScalarProperty Name="StoryPackage_ID" ColumnName="StoryPackage_ID" />
+          <ScalarProperty Name="StoryStoreInfo_ID" ColumnName="StoryStoreInfo_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoryTelling">
+      <EntityTypeMapping TypeName="DragonFighterModel.StoryTelling">
+        <MappingFragment StoreEntitySet="StoryTelling">
+          <ScalarProperty Name="StoryTelling_Content" ColumnName="StoryTelling_Content" />
+          <ScalarProperty Name="StoryTelling_ID" ColumnName="StoryTelling_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoryTellingImg">
+      <EntityTypeMapping TypeName="DragonFighterModel.StoryTellingImg">
+        <MappingFragment StoreEntitySet="StoryTellingImg">
+          <ScalarProperty Name="StoryTellingImg_Url" ColumnName="StoryTellingImg_Url" />
+          <ScalarProperty Name="StoryTellingImg_ID" ColumnName="StoryTellingImg_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StroyMapping">
+      <EntityTypeMapping TypeName="DragonFighterModel.StroyMapping">
+        <MappingFragment StoreEntitySet="StroyMapping">
+          <ScalarProperty Name="Seconds" ColumnName="Seconds" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="StoryTellingImg_ID" ColumnName="StoryTellingImg_ID" />
+          <ScalarProperty Name="StoryTelling_ID" ColumnName="StoryTelling_ID" />
+          <ScalarProperty Name="StoryStoreInfo_ID" ColumnName="StoryStoreInfo_ID" />
+          <ScalarProperty Name="StoryMapping_ID" ColumnName="StoryMapping_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subject">
+      <EntityTypeMapping TypeName="DragonFighterModel.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="CourseGrammar_ID" ColumnName="CourseGrammar_ID" />
+          <ScalarProperty Name="CourseSentence_ID" ColumnName="CourseSentence_ID" />
+          <ScalarProperty Name="CourseWord_ID" ColumnName="CourseWord_ID" />
+          <ScalarProperty Name="Template" ColumnName="Template" />
+          <ScalarProperty Name="Excel_idx" ColumnName="Excel_idx" />
+          <ScalarProperty Name="Subject_Name" ColumnName="Subject_Name" />
+          <ScalarProperty Name="SubjectType_ID" ColumnName="SubjectType_ID" />
+          <ScalarProperty Name="SubjectArea_ID" ColumnName="SubjectArea_ID" />
+          <ScalarProperty Name="Subject_ID" ColumnName="Subject_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectArea">
+      <EntityTypeMapping TypeName="DragonFighterModel.SubjectArea">
+        <MappingFragment StoreEntitySet="SubjectArea">
+          <ScalarProperty Name="SubjectArea_Name" ColumnName="SubjectArea_Name" />
+          <ScalarProperty Name="SubjectArea_ID" ColumnName="SubjectArea_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectFile">
+      <EntityTypeMapping TypeName="DragonFighterModel.SubjectFile">
+        <MappingFragment StoreEntitySet="SubjectFile">
+          <ScalarProperty Name="FileType" ColumnName="FileType" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Subject_ID" ColumnName="Subject_ID" />
+          <ScalarProperty Name="SubjectFile_ID" ColumnName="SubjectFile_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectType">
+      <EntityTypeMapping TypeName="DragonFighterModel.SubjectType">
+        <MappingFragment StoreEntitySet="SubjectType">
+          <ScalarProperty Name="SubjectType_Name" ColumnName="SubjectType_Name" />
+          <ScalarProperty Name="SubjectType_ID" ColumnName="SubjectType_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
